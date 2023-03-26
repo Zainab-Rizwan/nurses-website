@@ -4,6 +4,7 @@ import Navbar from "widgets/navbar";
 import { ThemeProvider } from '@mui/system';
 import { themeSettings } from 'theme';
 import { useTheme } from '@emotion/react';
+import Footer from 'widgets/footer';
 
 const Profile = () => {
     const theme = useTheme();
@@ -14,7 +15,8 @@ const Profile = () => {
         backgroundColor: neutralLight,
     }}>
         <Navbar />
-        <div>Profile</div>    
+        <div>Profile</div> 
+        <Footer />   
     </Box> 
     );
 };

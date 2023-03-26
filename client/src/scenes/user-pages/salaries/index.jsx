@@ -4,6 +4,7 @@ import Navbar from "widgets/navbar";
 import { ThemeProvider } from '@mui/system';
 import { themeSettings } from 'theme';
 import { useTheme } from '@emotion/react';
+import Footer from 'widgets/footer';
 
 const Salaries = () => {
     const theme = useTheme();
@@ -14,7 +15,8 @@ const Salaries = () => {
         backgroundColor: neutralLight,
     }}>
         <Navbar />
-        <div>Salaries</div>    
+        <div>Salaries</div>  
+        <Footer />  
     </Box> 
     );
 };

@@ -4,6 +4,7 @@ import Navbar from "widgets/navbar";
 import { ThemeProvider } from '@mui/system';
 import { themeSettings } from 'theme';
 import { useTheme } from '@emotion/react';
+import Footer from 'widgets/footer';
 
 const Facilities = () => {
     const theme = useTheme();
@@ -15,6 +16,7 @@ const Facilities = () => {
     }}>
         <Navbar />
         <div>Facilities</div>    
+        <Footer />
     </Box> 
     );
 };

@@ -52,11 +52,17 @@ export const themeSettings = createTheme({
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 16,
         },
-        h6: {
+        h6bold: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontWeight:500,
           fontSize: 14,
         },
+        h6: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 14,
+          fontWeight:300,
+        },
+        
       },
     },
   );

@@ -4,6 +4,7 @@ import Navbar from "widgets/navbar";
 import { ThemeProvider } from '@mui/system';
 import { themeSettings } from 'theme';
 import { useTheme } from '@emotion/react';
+import Footer from 'widgets/footer';
 
 const BrowseJobs = () => {
     const theme = useTheme();
@@ -14,7 +15,8 @@ const BrowseJobs = () => {
         backgroundColor: neutralLight,
     }}>
         <Navbar />
-        <div>Browse Jobs</div>    
+        <div>Browse Jobs</div>
+        <Footer />    
     </Box> 
     );
 };

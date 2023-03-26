@@ -36,7 +36,7 @@ const Navbar = () => {
   const primaryMain = theme.palette.primary.main;
   const background = theme.palette.background.default;
   const alt = theme.palette.background.default;
-  const bold= theme.typography.h6;
+  const bold= theme.typography.h6bold;
 
   const fullName = `John Doe`;
 
