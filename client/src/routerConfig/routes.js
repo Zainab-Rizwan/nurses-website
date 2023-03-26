@@ -8,7 +8,7 @@ import Jobs from 'scenes/employer-pages/jobs';
 import Home from 'scenes/user-pages/home';
 import Profile from 'scenes/user-pages/profile';
 import Salaries from 'scenes/user-pages/salaries'; 
-import browseJobs from 'scenes/user-pages/browse-jobs';
+import BrowseJobs from 'scenes/user-pages/browse-jobs';
 
 export const MyRoutes = [
     { path: "/", element: <Home />},
@@ -20,5 +20,5 @@ export const MyRoutes = [
     { path: "/jobs", element: <Jobs />},
     { path: "/profile", element: <Profile />},
     { path: "/salaries", element: <Salaries />},
-    { path: "/browse-jobs", element: <browseJobs />},
+    { path: "/browse-jobs", element: <BrowseJobs />},
 ]

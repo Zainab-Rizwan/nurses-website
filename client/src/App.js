@@ -1,15 +1,15 @@
 import React, { useMemo } from "react";
 import RouterConfig from "routerConfig/router";
 import { createTheme } from "@mui/system";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/system";
 import { themeSettings } from "theme";
+import Navbar from "widgets/navbar";
 
 
 function App() {
   return (
     <div className="App">   
     <ThemeProvider theme={themeSettings}>
-      <CssBaseline/>
       <RouterConfig/>
     </ThemeProvider> 
     </div>

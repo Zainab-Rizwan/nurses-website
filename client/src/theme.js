@@ -1,4 +1,5 @@
-import { createTheme } from "@mui/system";
+import { createTheme } from "@mui/material";
+
 
 export const colorTokens = {
     primary: {
@@ -53,6 +54,7 @@ export const themeSettings = createTheme({
         },
         h6: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontWeight:500,
           fontSize: 14,
         },
       },

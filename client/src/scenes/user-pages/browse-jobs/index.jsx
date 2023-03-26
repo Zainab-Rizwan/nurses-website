@@ -1,8 +1,22 @@
+import * as React from 'react';
+import { Box} from "@mui/system";
+import Navbar from "widgets/navbar";
+import { ThemeProvider } from '@mui/system';
+import { themeSettings } from 'theme';
+import { useTheme } from '@emotion/react';
 
-const browseJobs = () => {
+const BrowseJobs = () => {
+    const theme = useTheme();
+    const neutralLight = theme.palette.background.alt;
+
     return (
-    <div>Browse Jobs</div>    
+    <Box sx={{
+        backgroundColor: neutralLight,
+    }}>
+        <Navbar />
+        <div>Browse Jobs</div>    
+    </Box> 
     );
 };
 
-export default browseJobs;
+export default BrowseJobs;
