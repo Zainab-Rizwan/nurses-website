@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Box} from "@mui/system";
-import Navbar from "widgets/navbar";
+import Navbar from "shared/NavBar/navbar";
 import { ThemeProvider } from '@mui/system';
 import { themeSettings } from 'theme';
 import { useTheme } from '@emotion/react';
-import Footer from 'widgets/footer';
+import Footer from 'shared/Footer/footer';
 
 const Dashboard = () => {
     const theme = useTheme();

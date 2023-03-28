@@ -35,6 +35,7 @@ export const themeSettings = createTheme({
         h1: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 40,
+          fontWeight:700,
         },
         h2: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
@@ -50,6 +51,11 @@ export const themeSettings = createTheme({
         },
         h5: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 16,
+        },
+        h5bold: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontWeight:500,
           fontSize: 16,
         },
         h6bold: {

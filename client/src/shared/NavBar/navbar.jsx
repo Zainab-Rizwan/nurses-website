@@ -20,7 +20,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setLogin, setLogout } from "state";
 import { useNavigate } from "react-router-dom";
-import FlexBetween from "components/FlexBetween";
+import FlexBetween from "shared/FlexBetween/FlexBetween";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
