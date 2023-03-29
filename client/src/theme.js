@@ -7,9 +7,9 @@ export const colorTokens = {
       100: "#E3E8E9",
       200: "#CCD4DF",
       300: "#81A3BF",
-      400: "#818E9A",
+      400: "#5A6473",
       500: "#1A667A",
-      600: "#1D2842",
+      600: "#112145",
     },
   };
 
@@ -40,14 +40,30 @@ export const themeSettings = createTheme({
         h2: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 32,
+          fontWeight:700,
+
         },
         h3: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 24,
         },
+        h3bold: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 24,
+          fontWeight:700,
+        },
         h4: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 20,
+        },
+        h4light: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 18,
+        },
+        h4bold: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 18,
+          fontWeight:500,
         },
         h5: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),

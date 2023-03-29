@@ -1,12 +1,8 @@
 @import "./variables.scss";
-@import "~react-pro-sidebar/dist/scss/styles.scss";
 
-.App{
-  background-color: $light-gray;
-}
 
 body {
   font-family: $font-family !important;
   font-size: $font-16;
-  color: $light-gray;
+  background-color: $light-gray;
 }

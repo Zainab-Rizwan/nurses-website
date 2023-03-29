@@ -1,8 +1,5 @@
 import React from 'react';
-import { Box, Container, Button, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { ThemeProvider } from '@mui/system';
-import { themeSettings } from 'theme';
+import { Box, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 
 const Footer = () => {
@@ -16,7 +13,7 @@ const Footer = () => {
         sx={{
           backgroundColor: primaryMain,
           textAlign: 'center',
-          position: 'absolute',
+          position:'absolute',
           bottom: 0,
           left: 0,
           right: 0,
