@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import RouterConfig from "routes/router";
+import RouterConfig from "routes/Router";
 import { createTheme } from "@mui/system";
 import { ThemeProvider } from "@mui/system";
 import { themeSettings } from "theme";

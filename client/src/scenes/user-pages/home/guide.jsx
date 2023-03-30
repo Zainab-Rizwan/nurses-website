@@ -6,23 +6,28 @@ import { Container } from "@mui/system";
 import Images from "constants/ImgConstants";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
-
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
 
 const Guide = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const white = theme.palette.background.default;
   const lightGray = theme.palette.background.alt;
-  const darkGray = theme.palette.primary.dark;
+  const darkGray = theme.palette.neutral.dark;
   const mainBlue = theme.palette.neutral.main;
-  const cyanBlue = theme.palette.neutral.dark;
-  const lightBlue = theme.palette.primary.dark;
-  const darkBlue = theme.palette.neutral.main;
+  const cyanBlue = theme.palette.primary.main;
+  const lightBlue = theme.palette.neutral.light;
+  const darkBlue = theme.palette.primary.dark;
   const h1 = theme.typography.h1;
   const h2 = theme.typography.h2;
+  const h3 = theme.typography.h3;
   const h3bold = theme.typography.h3bold;
+  const h4 = theme.typography.h4;
   const h4bold = theme.typography.h4bold;
   const h4light = theme.typography.h4light;
+  const h5 = theme.typography.h5;
   const h5bold = theme.typography.h5bold;
+  const h6 = theme.typography.h6;
   const h6bold = theme.typography.h6bold;
   const isTabletScreens = useMediaQuery("(min-width: 720px)");
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
@@ -53,6 +58,7 @@ const Guide = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
     marginTop: theme.spacing(5),
     [theme.breakpoints.down("sm")]: {
       margin: theme.spacing(2, 0, 2, 0),
@@ -66,31 +72,26 @@ const Guide = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          width: "5%",
-          height: "5px",
-          backgroundColor: "#000339",
-          margin: "0 auto",
-        }}
-      ></div>
+        mt: 0,
+        marginTop: 0
+      }}>
 
       <Typography
-        variant="h3"
-        sx={{ fontSize: "35px", fontWeight: "bold", color: "#000339", my: 3 }}
+        sx={{ 
+          fontSize: isDesktopScreens ? h2 : h3bold, 
+          color: darkBlue, 
+          my: 3,
+         
+       }}
       >
         How it works?
       </Typography>
 
       <CustomBox>
         <Typography
-          variant="body2"
           sx={{
-            fontSize: "16px",
-            fontWeight: "500",
-            color: "#5A6473",
+            font: h5bold,
+            color: darkGray,
             textAlign: "center",
           }}
         >
@@ -100,18 +101,26 @@ const Guide = () => {
       </CustomBox>
 
       <GuidesBox>
-        <GuideBox>
-          <img src={ArrowRightAltIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
+      <GuideBox>
+        <Typography
             sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3c45",
+              fontWeight: "700",
+              fontSize: "75px",
+              color: darkBlue,
               my: 1,
             }}
           >
-            Buying Guides
+            1
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "500",
+              fontSize: "20px",
+              color: darkBlue,
+              my: 1,
+            }}
+          >
+            Register Account
           </Typography>
           <Box
             sx={{
@@ -122,27 +131,34 @@ const Guide = () => {
             }}
           >
             <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
+              sx={{ fontWeight: "bold", fontSize: "14px", color:cyanBlue }}
             >
-              How to buy
+              Create Profile
             </Typography>
-            <ArrowRightAltIcon style={{ color: "#0689FF" }} />
+            <ArrowRightAltIcon style={{ color:cyanBlue }} />
           </Box>
         </GuideBox>
 
         <GuideBox>
-          <img src={ArrowRightAltIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
+        <Typography
             sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3c45",
+              fontWeight: "700",
+              fontSize: "75px",
+              color: darkBlue,
               my: 1,
             }}
           >
-            Renting Guides
+            2
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "500",
+              fontSize: "20px",
+              color: darkBlue,
+              my: 1,
+            }}
+          >
+            Find Job
           </Typography>
           <Box
             sx={{
@@ -153,27 +169,34 @@ const Guide = () => {
             }}
           >
             <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
+              sx={{ fontWeight: "bold", fontSize: "14px", color:cyanBlue }}
             >
-              How to rent
+              Browse Jobs
             </Typography>
-            <ArrowRightAltIcon style={{ color: "#0689FF" }} />
+            <ArrowRightAltIcon style={{ color:cyanBlue }} />
           </Box>
         </GuideBox>
 
         <GuideBox>
-          <img src={ArrowRightAltIcon} alt="buyIcon" />
-          <Typography
-            variant="body2"
+        <Typography
             sx={{
-              fontWeight: "500",
-              fontSize: "20px",
-              color: "#3B3c45",
+              fontWeight: "700",
+              fontSize: "75px",
+              color: darkBlue,
               my: 1,
             }}
           >
-            Selling Guides
+            3
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "500",
+              fontSize: "20px",
+              color: darkBlue,
+              my: 1,
+            }}
+          >
+            Apply For Job
           </Typography>
           <Box
             sx={{
@@ -184,12 +207,11 @@ const Guide = () => {
             }}
           >
             <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", }}
+              sx={{ fontWeight: "bold", fontSize: "14px", color: cyanBlue }}
             >
-              How to sell
+              Learn More
             </Typography>
-            <ArrowRightAltIcon style={{ color: "#0689FF" }} />
+            <ArrowRightAltIcon style={{ color: cyanBlue }} />
           </Box>
         </GuideBox>
       </GuidesBox>

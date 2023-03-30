@@ -1,24 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Box, styled } from '@mui/material';
+import 'leaflet/dist/leaflet.css'; // import leaflet CSS
+import './map.scss';
+import L from 'leaflet';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const Map = () => {
-  const [map, setMap] = useState(null);
+delete L.Icon.Default.prototype._getIconUrl;
 
-  useEffect(() => {
-    // create map object
-    const mapOptions = {
-      center: { lat: 40.712776, lng: -74.005974 },
-      zoom: 12,
-    };
-    const newMap = new window.google.maps.Map(document.getElementById("map"), mapOptions);
-    setMap(newMap);
-  }, []);
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
+const CustomBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: 0,
+}));
+
+const bounds = [[25.82, -124.39], [49.38, -66.94]]; 
+
+function Map() {
+  const facilities = [
+    {
+      name: 'Facility 1',
+      text: 'Lorem Ipsum Dolor',
+      location: [37.0902, -95.7129],
+    },
+    {
+      name: 'Facility 2',
+      text: 'Lorem Ipsum Dolor',
+      location: [40.721821, -73.99321],
+    },
+  ];
 
   return (
-    <div
-      id="map"
-      style={{ height: "100px", width: "90%" }}
-    ></div>
+    <CustomBox>
+    <div className="map-container">
+      <MapContainer center={[37.0902, -95.7129]} zoom={6} scrollWheelZoom={true} maxBounds={bounds} maxBoundsViscosity={1.0}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {facilities.map((facility, index) => (
+          <Marker key={index} position={facility.location}>
+            <Popup>{facility.name} - {facility.text}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
+    </CustomBox>
   );
-};
+}
 
 export default Map;

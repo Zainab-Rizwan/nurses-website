@@ -26,6 +26,7 @@ const About = () => {
     justifyContent: "center",
     gap: theme.spacing(2),
     marginTop: theme.spacing(3),
+    marginBottom: 0,
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -59,7 +60,7 @@ const About = () => {
 
   
   return (
-    <Box sx={{ minHeight: "100vh" }}>
+    <Box sx={{ minHeight: "100vh",  }}>
       <Container>
         <CustomBox>
           <Box sx={{ flex: "1.25" }}>

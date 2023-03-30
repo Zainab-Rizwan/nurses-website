@@ -1,0 +1,20 @@
+.map-container {
+    position: relative;
+    width: 75%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .map-container .leaflet-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+  }
+  
