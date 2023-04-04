@@ -16,15 +16,18 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import {useLocation} from "react-router-dom";
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer({children, ...props}) {
     const {window} = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { pathname } = useLocation();
 
     console.log("I'm getting children object as: ", children);
     console.log("I'm getting props object as: ", props);
+    console.log("I'm getting props object as: ", pathname);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -35,13 +38,15 @@ function ResponsiveDrawer({children, ...props}) {
             <Toolbar/>
             <Divider/>
             <List>
-                {['Jobs', 'Dashboard', 'Applicants', 'Facilities', 'Discipline', 'Account'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
+                {['Dashboard', 'Applicants', 'Facilities', 'Discipline', 'Account'].map((text, index) => (
+                    // make item selected and text and icon color primary
+                    // const isSelected = pathname === `/${text.toLowerCase()}`;
+                    <ListItem key={text}>
+                        <ListItemButton selected={pathname === `/${text.toLowerCase()}`} component="a" href={`/${text.toLowerCase()}`}>
+                            <ListItemIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}>
+                                {index % 2 === 0 ? <InboxIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}/> : <MailIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}/>}
                             </ListItemIcon>
-                            <ListItemText primary={text}/>
+                            <ListItemText primary={<Typography color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'} fontWeight={pathname === `/${text.toLowerCase()}` ? 'medium' : 'inherit'}>{text}</Typography>}/>
                         </ListItemButton>
                     </ListItem>
                 ))}

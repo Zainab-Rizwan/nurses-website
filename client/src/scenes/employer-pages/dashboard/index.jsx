@@ -3,7 +3,7 @@ import {useTheme} from '@emotion/react';
 import WelcomeCard from "./welcome";
 import NavStat from "./nav-stat";
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import {Typography} from "@mui/material";
 import Box from '@mui/material/Box';
 
 const Dashboard = () => {
@@ -19,12 +19,12 @@ const Dashboard = () => {
 
     return (
         <Box style={{backgroundColor: neutralLight, height: "100vh"}} container spacing={2}>
-            <Grid container >
-                <Grid item xs={12}>
+            <Grid container>
+                <Grid item xs={12} style={{marginBottom: "2rem"}}>
                     <WelcomeCard/>
                 </Grid>
                 {navs.map((nav, index) => (
-                    <Grid item xs={3} key={index} style={{padding: "1rem"}}>
+                    <Grid item xs={12} sm={6} md={3} key={index} style={{padding: "0.2rem"}}>
                         <NavStat title={nav}/>
                     </Grid>
                 ))}

@@ -15,7 +15,7 @@ export default class RouterConfig extends Component {
                     <Routes>
                         {MyRoutes.map((route, i) => (
                             <Route
-                                key={"********************************"}
+                                key={i}
                                 path={route.path}
                                 element={<route.layout><route.component /></route.layout>}
                             />

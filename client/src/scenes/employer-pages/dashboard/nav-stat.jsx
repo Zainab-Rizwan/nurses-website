@@ -33,7 +33,7 @@ export default function NavStat({title}) {
 
     return (
         // card with zero shadow
-        <Card sx={{boxShadow: 0, borderRadius: 4}}>
+        <Card sx={{boxShadow: 0, borderRadius: 3}}>
             <ButtonBase
                 focusRipple
                 focusVisibleClassName={classes.focusVisible}
@@ -41,8 +41,7 @@ export default function NavStat({title}) {
                     width: '100%',
                 }}
             >
-
-                <CardContent sx={{textAlign: "left"}}>
+                <CardContent>
 
                     <Typography variant="h4" component="div" color={"text.secondary"}>
                         <b>{title}</b>

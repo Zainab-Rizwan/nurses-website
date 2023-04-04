@@ -19,8 +19,8 @@ export default function WelcomeCard() {
     return (
         <Card sx={{minWidth: 275}}>
             <CardContent>
-                <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                    Word of the Day
+                <Typography variant="h3" fontWeight="bold" gutterBottom>
+                    Welcome to the Company, Joe!
                 </Typography>
                 <Typography variant="h5" component="div">
                     be{bull}nev{bull}o{bull}lent
@@ -35,7 +35,7 @@ export default function WelcomeCard() {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button>Start Exploring</Button>
             </CardActions>
         </Card>
     );
