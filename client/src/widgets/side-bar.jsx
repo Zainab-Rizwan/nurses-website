@@ -16,7 +16,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {useLocation} from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
@@ -24,10 +25,6 @@ function ResponsiveDrawer({children, ...props}) {
     const {window} = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const { pathname } = useLocation();
-
-    console.log("I'm getting children object as: ", children);
-    console.log("I'm getting props object as: ", props);
-    console.log("I'm getting props object as: ", pathname);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -42,7 +39,7 @@ function ResponsiveDrawer({children, ...props}) {
                     // make item selected and text and icon color primary
                     // const isSelected = pathname === `/${text.toLowerCase()}`;
                     <ListItem key={text}>
-                        <ListItemButton selected={pathname === `/${text.toLowerCase()}`} component="a" href={`/${text.toLowerCase()}`}>
+                        <ListItemButton selected={pathname === `/${text.toLowerCase()}`}component={Link} to={`/${text.toLowerCase()}`}>
                             <ListItemIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}>
                                 {index % 2 === 0 ? <InboxIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}/> : <MailIcon color={pathname === `/${text.toLowerCase()}` ? 'primary' : 'inherit'}/>}
                             </ListItemIcon>
@@ -77,7 +74,7 @@ function ResponsiveDrawer({children, ...props}) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        {children.name}
+                        {pathname}
                     </Typography>
                 </Toolbar>
             </AppBar>

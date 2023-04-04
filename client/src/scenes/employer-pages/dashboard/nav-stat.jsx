@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {useTheme} from '@emotion/react';
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {ButtonBase} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 
@@ -31,9 +31,26 @@ export default function NavStat({title}) {
     const theme = useTheme();
     const classes = useStyles();
 
+    const navigateTo = () => {
+        switch (title) {
+            case "Disciplines":
+                return "/disciplines";
+            case "Facilities":
+                return "/facilities";
+            case "Jobs Listings":
+                return "/jobs";
+            case "Applicants":
+                return "/applicants";
+            default:
+                return "/";
+        }
+    }
+
+
+
     return (
         // card with zero shadow
-        <Card sx={{boxShadow: 0, borderRadius: 3}}>
+        <Card sx={{boxShadow: 0, borderRadius: 3}} onClick={() => Navigate(navigateTo())}>
             <ButtonBase
                 focusRipple
                 focusVisibleClassName={classes.focusVisible}

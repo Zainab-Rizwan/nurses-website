@@ -3,7 +3,6 @@ import {useTheme} from '@emotion/react';
 import WelcomeCard from "./welcome";
 import NavStat from "./nav-stat";
 import Grid from '@mui/material/Grid';
-import {Typography} from "@mui/material";
 import Box from '@mui/material/Box';
 
 const Dashboard = () => {
