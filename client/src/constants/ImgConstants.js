@@ -1,8 +1,14 @@
 let Images = {
     HERO_IMG: require("../assets/images/hero.jpg"),
     IMG: require("../assets/images/image-2.jpg"),
+    AUTH_IMG: require("../assets/images/image-1.jpg"),
+    MORE_INFO_1: require("../assets/images/more-info-2.jpg"),
+    MORE_INFO_2: require("../assets/images/more-info-4.jpg"),
+    HEADER_IMG: require("../assets/images/more-info-3.jpg"),
+
+
+
 };
   
-// Image by <a href="https://www.freepik.com/free-photo/side-view-doctor-with-stethoscope-working-laptop_10870237.htm#page=3&query=nurse%20laptop&position=18&from_view=search&track=ais">Freepik</a>
 export default Images;
   

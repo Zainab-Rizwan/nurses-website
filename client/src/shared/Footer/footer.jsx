@@ -13,7 +13,7 @@ const Footer = () => {
         sx={{
           backgroundColor: primaryMain,
           textAlign: 'center',
-          position:'absolute',
+          position:'relative',
           bottom: 0,
           left: 0,
           right: 0,

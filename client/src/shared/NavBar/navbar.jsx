@@ -31,7 +31,9 @@ const Navbar = () => {
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const primaryLight = theme.palette.primary.light;
+  const primary = theme.palette.neutral.main;
   const primaryMain = theme.palette.primary.main;
+  const neutralDark =  theme.palette.neutral.alt;
   const background = theme.palette.background.default;
   const alt = theme.palette.background.default;
   const bold= theme.typography.h6bold;
@@ -48,7 +50,7 @@ const Navbar = () => {
           onClick={() => navigate("/")}
           sx={{
             "&:hover": {
-              color: primaryLight,
+              color: primary,
               cursor: "pointer",
             },
           }}
@@ -81,10 +83,10 @@ const Navbar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem style={{ color: primaryMain, ...bold }} value={fullName}>
+              <MenuItem style={{ color: neutralDark, ...bold }} value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem style={{ color: primaryMain, ...bold }} onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              <MenuItem style={{ color: neutralDark, ...bold }} onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>

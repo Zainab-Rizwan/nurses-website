@@ -1,28 +1,29 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Box, styled } from '@mui/material';
+import { Box, styled, useMediaQuery } from '@mui/material';
 import 'leaflet/dist/leaflet.css'; // import leaflet CSS
-import './map.scss';
+import './index.scss';
 import L from 'leaflet';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    iconUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF",
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
 const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  marginBottom: 0,
 }));
 
 const bounds = [[25.82, -124.39], [49.38, -66.94]]; 
 
 function Map() {
+  const isTabletScreens = useMediaQuery("(min-width: 508px)");
+  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
+
   const facilities = [
     {
       name: 'Facility 1',
@@ -37,7 +38,7 @@ function Map() {
   ];
 
   return (
-    <CustomBox>
+    <CustomBox sx={{marginTop: isDesktopScreens ? "4rem": isTabletScreens ? "3rem" : "4rem" }}>
     <div className="map-container">
       <MapContainer center={[37.0902, -95.7129]} zoom={6} scrollWheelZoom={true} maxBounds={bounds} maxBoundsViscosity={1.0}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

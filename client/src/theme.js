@@ -10,12 +10,14 @@ export const colorTokens = {
       400: "#5A6473",
       500: "#1A667A",
       600: "#112145",
+      700: "#EAF0F9",
     },
   };
 
 export const themeSettings = createTheme({
       palette: {
              primary: {
+                light: colorTokens.primary[700],
                 dark: colorTokens.primary[600],
                 main: colorTokens.primary[500],
               },
@@ -82,6 +84,11 @@ export const themeSettings = createTheme({
         h6: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 14,
+          fontWeight:300,
+        },
+        h7: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontSize: 11,
           fontWeight:300,
         },
         

@@ -1,24 +1,29 @@
+
 import * as React from 'react';
-import { Box} from "@mui/system";
 import Navbar from "shared/NavBar/navbar";
-import { ThemeProvider } from '@mui/system';
-import { themeSettings } from 'theme';
-import { useTheme } from '@emotion/react';
 import Footer from 'shared/Footer/footer';
+import { Box} from "@mui/material";
+import Guide from './guide';
+import Header from './header';
+import Search from './filter';
+import Jobs from './jobs';
 
 const BrowseJobs = () => {
-    const theme = useTheme();
-    const neutralLight = theme.palette.background.alt;
-
     return (
-    <Box sx={{
-        backgroundColor: neutralLight,
-    }}>
-        <Navbar />
-        <div>Browse Jobs</div>
-        <Footer />    
+    <Box>
+      <Navbar />
+      <Header />
+      <Search />
+      <Guide />
+      <Jobs />
+      <Footer/>
     </Box> 
     );
 };
 
 export default BrowseJobs;
+
+
+
+
+

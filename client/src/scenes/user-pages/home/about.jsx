@@ -18,60 +18,39 @@ const About = () => {
   const h4bold = theme.typography.h4bold;
   const h4light = theme.typography.h4light;
   const h5 = theme.typography.h5bold;
-  const isTabletScreens = useMediaQuery("(min-width: 768px)");
+  const isTabletScreens = useMediaQuery("(min-width: 508px)");
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     gap: theme.spacing(2),
-    marginTop: theme.spacing(3),
-    marginBottom: 0,
+    marginTop: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
       textAlign: "center",
     },
-    "& > div:last-of-type": {
-      [theme.breakpoints.down("md")]: {
-        width: "80%",
-        maxWidth: "100%",
-        marginTop: "0rem"
-      },
-    },
+  
   }));
 
   const CustomImage = styled('img')(({ theme }) => ({
     maxWidth: isDesktopScreens ? "90%" : isTabletScreens ? "95%" : "100%",
-    marginBottom: "1rem",
-    marginTop: isDesktopScreens ? "2rem" : "1rem",
-    [theme.breakpoints.down("md")]: {
-      maxWidth: isDesktopScreens ? "65%" : "80%",
-    },
+    marginTop: isDesktopScreens ? "4rem" : isTabletScreens ?  "2rem" : "4rem",
   }));
-
-
-  const CustomButton = styled(Button)(({ theme }) => ({
-    [theme.breakpoints.up("md")]: {
-      fontSize: "1.25rem",
-      padding: "1rem 2.5rem",
-    },
-  }));
-
   
   return (
-    <Box sx={{ minHeight: "100vh",  }}>
+    <Box >
       <Container>
         <CustomBox>
           <Box sx={{ flex: "1.25" }}>
             <CustomImage src={Images.IMG} alt="heroImg" />
           </Box>
 
-          <Box sx={{ flex: "1.75" }}>
+          <Box sx={{ flex: "1.75", marginTop: isDesktopScreens ? "4rem": "2rem" }}>
             <Typography sx={{
                   fontSize: isDesktopScreens ? h4bold : h5,
                   color: primaryMain,
-                  mt: isDesktopScreens ? 6 : 2,
                   mb: isDesktopScreens ? 2 : 1,
             }}>About Us</Typography>
 
@@ -88,16 +67,16 @@ const About = () => {
               sx={{ 
                 fontSize: isDesktopScreens ? h4light : h5,
                 color:neutralDark, 
-                my: isDesktopScreens ? 4 : 2,
+                my: 2,
             }}
             >
-             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             </Typography>
             <Button
               value="Browse Jobs"
               onClick={() => navigate("/browse-jobs")}
             />
-          </Box>
+            </Box>
          
         </CustomBox>
       </Container>
