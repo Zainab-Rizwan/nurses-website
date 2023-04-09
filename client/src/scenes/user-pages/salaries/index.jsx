@@ -9,6 +9,7 @@ import Header from './header';
 import Calculator from './calculator';
 import Graph from './graph';
 import Details from './details';
+import Search from './search';
 
 const Salaries = () => {
     return (
@@ -17,6 +18,7 @@ const Salaries = () => {
         <Header />
         <Calculator />
         <Details />
+        <Search />
         <Graph />
         <StatesTable />
         <EmployersTable />

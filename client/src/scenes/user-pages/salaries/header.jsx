@@ -58,32 +58,29 @@ const Header = () => {
             Compare Your Pay             
         </Typography>
         <Typography sx={{ 
-            fontSize: isDesktopScreens ? h4bold : isTabletScreens ? h4bold : h6bold,
+            fontSize: isDesktopScreens ? h4bold : isTabletScreens ? h4bold : h5bold,
                 color: "#5A6473", 
-                my: isDesktopScreens ? 4 : 2 }}
+                my: isDesktopScreens ? 4 : 2,
+               }}
         >
         Compare your pay with the most up-to-date job market data using our 
         comprehensive salary calculator
         </Typography>
 
-        <Box  sx={{ display: 'flex', justifyContent: "space-evenly", gap: isDesktopScreens ? 0.75  :  1, }}>
-        <FormControl sx={{ minWidth: '10rem',}}>
-            <InputLabel>Select a discipline</InputLabel>
-            <Select
-            label="Select a discipline"
-            value={selectedValue}
-            onChange={handleChange}
-            autoWidth
-            >
+        <Box sx={{ display: 'flex', justifyContent: 'space-evenly', gap: isDesktopScreens ? 0.75 : 1, mt: isDesktopScreens ? theme.spacing(4) : theme.spacing(2)}}>
+        <FormControl >
+          <InputLabel>Select a discipline</InputLabel>
+          <Select label="Select a discipline" value={selectedValue} onChange={handleChange} fullWidth>
             {disciplines.map((discipline) => (
-                <MenuItem key={discipline.value} value={discipline.value}>
+              <MenuItem key={discipline.value} value={discipline.value}>
                 {discipline.value}
-                </MenuItem>
+              </MenuItem>
             ))}
-            </Select>
+          </Select>
         </FormControl>
-        <Button value="Compare Pay" />
-        </Box>
+        <Button value="Compare Pay" sx={{display: "flex", flexWrap:"no wrap"}} />
+      </Box>
+
 
       </Grid>
     </Grid>

@@ -22,7 +22,7 @@ const Header = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
     maxWidth: "90%",
     marginTop: isDesktopScreens ? theme.spacing(10) : isTabletScreens ? theme.spacing(8) :theme.spacing(6),
-    marginBottom:isDesktopScreens ? theme.spacing(8) : isTabletScreens ? theme.spacing(6) :theme.spacing(4),
+    marginBottom:isDesktopScreens ? theme.spacing(10) : isTabletScreens ? theme.spacing(8) :theme.spacing(6),
   }));
 
   return (

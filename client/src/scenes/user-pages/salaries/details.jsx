@@ -1,139 +1,111 @@
-import { Box, Card, CardContent, CardActions, styled, Typography, useMediaQuery } from "@mui/material";
+import { Box, styled, Typography, useMediaQuery, Grid, FormControl, CssBaseline, Paper, TextField, InputLabel, Select, MenuItem} from "@mui/material";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import React from "react";
-import Button from "shared/Button";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
+import Images from "constants/ImgConstants";
+import JobCard from "shared/Job-Cards";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect, useRef } from 'react';
+import './index.scss';
+import Button from "shared/Button";
 
 
 const Details = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const mainBlue = theme.palette.primary.light ;
   const darkGray = theme.palette.neutral.dark;
   const darkBlue = theme.palette.primary.dark;
-  const h2 = theme.typography.h2;
-  const h3bold = theme.typography.h3bold;
-  const h4bold = theme.typography.h4bold;
-  const h5bold = theme.typography.h5bold;
-  const h6 = theme.typography.h6;
+  const primaryMain = theme.palette.primary.main;
+  const white = theme. palette.neutral.default;
+  const h1 = theme.typography.h1;  
+  const h2 = theme.typography.h2;  
   const h5 = theme.typography.h5;
-  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
+  const h7 = theme.typography.h7;
+  const h4bold = theme.typography.h4bold;
+  const h3bold = theme.typography.h3bold;
+  const h5bold = theme.typography.h5bold;
+  const h6bold = theme.typography.h6bold;
+  const isDesktopScreens = useMediaQuery("(min-width: 800px)");
+  const isTabletScreens = useMediaQuery("(min-width: 650px)");
+
+  const CustomImage = styled('img')(({ theme }) => ({
+    maxWidth: "100%",
+  }));
 
   const CustomBox = styled(Box)(({ theme }) => ({
-    maxWidth: "90%",
-    [theme.breakpoints.down("md")]: {
-      width: "95%",
-    },
-  }));
-
-  const GuidesBox = styled(Box)(({ theme }) => ({
     display: "flex",
-    justifyContent: "space-between",
-    marginTop: theme.spacing(1),
+    justifyContent: "center",
+    gap: theme.spacing(8),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
-      justifyContent: "center",
-    },
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
     },
   }));
   
-  const GuideBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    margin: theme.spacing(4, 0, 4, 0),
-    flex: 1,
-  
-    [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(2, 0, 2, 0),
-    },
-  }));
 
   return (
-    
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        marginLeft: "10%",
-        marginRight: "10%",
-        marginTop: theme.spacing(6),
-        marginBottom: "2em",    
-      }}>
-      <GuidesBox>
-      <GuideBox>
-        <Card elevation={9} sx={{minWidth: 300 }}>
-        <CardContent>
+    <Box sx={{  marginLeft: "10%", marginRight:"10%", marginTop: theme.spacing(8), p:3,  border: `15px solid ${mainBlue}`, textAlign:"center" }}>
+    <CustomBox>
+        <Box  sx={{ flex: "1.25", p:3, }} >
         <Typography
-          sx={{
-            fontSize: h4bold,
-            color: darkBlue,
-            my: 1,
-          }}
-        >
-          Create Profile
-        </Typography> 
-        <Typography sx={{ fontSize: h6, color: darkGray}}>
-        Create a personalized profile to showcase your skills and experiences. 
-        This is your chance to highlight your ambitions and accomplishments.
-        </Typography>       
-        </CardContent>
-        <CardActions>
-          <Button value="Register"  onClick={() => navigate("/browse-jobs")}/>
-        </CardActions>
-        </Card> 
-      </GuideBox>
-
-      <GuideBox>
-      <Card elevation={9} sx={{minWidth: 300 }}>
-      <CardContent>
-        <Typography
-          sx={{
-            display: 'flex',
-            alignItems: 'center', 
-            fontSize: h4bold,
-            color: darkBlue,
-            my: 1,
+          sx={{ 
+            fontSize: h5bold,
+            mb: 1,
+            color: darkBlue, 
           }}>
-          Find Job         
-        </Typography>
-        <Typography sx={{ fontSize: h6, color: darkGray}}>
-          Explore a wide range of job openings from top facilities. 
-          Use our advanced search filters to find job listings which meet your preferences.
-        </Typography>       
-      </CardContent>
-      <CardActions>
-        <Button value="Browse Jobs"  onClick={() => navigate("/browse-jobs")} />
-      </CardActions>
-     </Card>
-    </GuideBox>
+        Weekly Pay
+        </Typography> 
+          <Typography
+          sx={{ 
+            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            color: primaryMain, 
+          }}>
+         $52/hour
+        </Typography>     
+        </Box>
 
-    <GuideBox>
-    <Card elevation={9} sx={{minWidth: 300 }}>
-      <CardContent>
-      <Typography
-        sx={{
-          fontSize: h4bold,
-          color: darkBlue,
-          my: 1,
-        }}>
-        Apply For Jobs
-      </Typography> 
-      <Typography sx={{ fontSize: h6, color: darkGray}}>
-      Apply for jobs with ease using our user-friendly application process. 
-      With our platform, you can boost your chances of landing your dream job. 
-      </Typography>       
-      </CardContent>
-      <CardActions>
-        <Button value="Learn More"  onClick={() => navigate("/browse-jobs")}/>
-        </CardActions>
-        </Card> 
-      </GuideBox>
-      </GuidesBox>
-    </Box>
+        <Box  sx={{ flex: "1.25", p:3 }} >
+        <Typography
+          sx={{ 
+            fontSize: h5bold,
+            mb: 1,
+            color: darkBlue, 
+          }}>
+        Burden
+        </Typography> 
+          <Typography
+          sx={{ 
+            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            color: primaryMain, 
+          }}>
+         $1265/hour
+        </Typography>     
+        </Box>
+
+        <Box  sx={{ flex: "1.25", p:3 }} >
+        <Typography
+          sx={{ 
+            fontSize: h5bold,
+            mb: 1,
+            color: darkBlue, 
+          }}>
+        Mark Up
+        </Typography> 
+          <Typography
+          sx={{ 
+            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            color: primaryMain, 
+          }}>
+         $32.67/hour
+        </Typography>     
+        </Box>
+    </CustomBox>
+    </Box>  
   );
 };
 
