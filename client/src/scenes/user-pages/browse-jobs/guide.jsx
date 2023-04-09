@@ -15,6 +15,7 @@ const Guide = () => {
   const h4bold = theme.typography.h4bold;
   const h5bold = theme.typography.h5bold;
   const h6 = theme.typography.h6;
+  const h5 = theme.typography.h5;
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
   const CustomBox = styled(Box)(({ theme }) => ({
@@ -59,7 +60,7 @@ const Guide = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "2rem",
+        marginTop: "4rem",
         marginBottom: "2em",    
       }}>
         
@@ -75,7 +76,9 @@ const Guide = () => {
       <CustomBox>
         <Typography
           sx={{
-            font: h5bold,
+            marginLeft: "10%",
+            marginRight: "10%",
+            fontSize: h5,
             color: darkGray,
             textAlign: "center",
             my: 1,

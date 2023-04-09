@@ -24,10 +24,10 @@ const JobCard = ({ job }) => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: theme.spacing(4, 1, 4, 1),
+    margin: theme.spacing(4, 0, 4, 0),
     flex: 1,
     [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(2, 1, 2, 1),
+      margin: theme.spacing(2, 0, 2, 0),
     },
   }));
 

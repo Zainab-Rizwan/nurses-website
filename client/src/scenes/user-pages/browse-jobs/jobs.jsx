@@ -28,7 +28,8 @@ export default function Carousel(props){
   const mainBlue = theme.palette.primary.main ;
   const darkGray = theme.palette.neutral.dark;
   const darkBlue = theme.palette.primary.dark;
-  const h2 = theme.typography.h2;
+  const h2 = theme.typography.h2;  
+  const h5 = theme.typography.h5;
   const h3bold = theme.typography.h3bold;
   const h5bold = theme.typography.h5bold;
   const h6bold = theme.typography.h6bold;
@@ -57,8 +58,30 @@ export default function Carousel(props){
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: isDesktopScreens ? 3 : 1,
     slidesToScroll: isDesktopScreens ? 3 : 1,
+    responsive: [
+      {
+        breakpoint: 2000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 1250,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 850,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 
@@ -76,7 +99,7 @@ export default function Carousel(props){
         </Typography>
         <Typography
             sx={{
-              font: h5bold,
+              fontSize: h5,
               color: darkGray,
               my: 6,
               mt: 0
@@ -88,7 +111,7 @@ export default function Carousel(props){
        
 
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", mt: 2 }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
@@ -129,7 +152,7 @@ export default function Carousel(props){
 
       
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
@@ -169,7 +192,7 @@ export default function Carousel(props){
       </Box>
 
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
@@ -209,7 +232,7 @@ export default function Carousel(props){
       </Box>
 
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,

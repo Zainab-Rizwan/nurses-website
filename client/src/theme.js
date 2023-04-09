@@ -76,6 +76,11 @@ export const themeSettings = createTheme({
           fontWeight:500,
           fontSize: 16,
         },
+        h5bolder: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontWeight:700,
+          fontSize: 16,
+        },
         h6bold: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontWeight:500,
