@@ -46,7 +46,7 @@ const Details = () => {
     display: "flex",
     justifyContent: "center",
     backgroundColor: white,
-    marginTop: "4rem",
+    marginTop: theme.spacing(4),
     gap: theme.spacing(2),
     
     [theme.breakpoints.down("md")]: {

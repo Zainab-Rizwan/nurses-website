@@ -60,7 +60,7 @@ const Guide = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "4rem",
+        marginTop: theme.spacing(6),
         marginBottom: "2em",    
       }}>
         

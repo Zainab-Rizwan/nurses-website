@@ -60,26 +60,27 @@ export default function TopJobs(props){
           slidesToScroll: 3
         }
       },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
+    {
+      breakpoint: 1250,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
       }
-    ]
+    },
+    {
+      breakpoint: 850,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
   };
+
 
   return (
     <Box>
-      <Box>         
+      <Box sx={{ my: theme.spacing(8), marginTop: theme.spacing(6) }}>         
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
             <Typography
               sx={{ 

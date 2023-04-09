@@ -36,7 +36,7 @@ const Recruiters = () => {
 
   const CustomImage = styled('img')(({ theme }) => ({
     maxWidth: isDesktopScreens ? "90%" : isTabletScreens ? "95%" : "100%",
-    marginTop: isDesktopScreens ? "4rem" : isTabletScreens ?  "2rem" : "4rem",
+    marginTop: theme.spacing(2),
   }));
 
   

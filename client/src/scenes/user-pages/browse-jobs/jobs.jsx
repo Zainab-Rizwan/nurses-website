@@ -39,7 +39,7 @@ export default function Carousel(props){
   const GuidesBox = styled(Box)(({ theme }) => ({
     justifyContent: "center",
     alignItems:"center",
-    width: "80%",
+    width: "85%",
     marginTop: theme.spacing(1),
   }));
 
@@ -58,42 +58,40 @@ export default function Carousel(props){
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToScroll: isDesktopScreens ? 3 : 1,
     responsive: [
       {
         breakpoint: 2000,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2
+          slidesToScroll: 3
         }
       },
-      {
-        breakpoint: 1250,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 850,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
+    {
+      breakpoint: 1150,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
       }
-    ]
+    },
+    {
+      breakpoint: 850,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
   };
 
 
   return (
-    <Box>
+    <Box sx={{ marginBottom: theme.spacing(8), marginTop: theme.spacing(6)}}>
       <Box sx={{  marginLeft: "10%", marginRight:"10%" }}>
         <Typography
           sx={{ 
             fontSize: isDesktopScreens ? h2 : h3bold, 
             color: darkBlue, 
             my: 1,
-            mt: 8
           }}>
           Top Jobs
         </Typography>
@@ -270,11 +268,7 @@ export default function Carousel(props){
           </GuidesBox>
         </Box>
       </Box>
-
-
-    </Box>
-
-    
+    </Box> 
   );
 };
 

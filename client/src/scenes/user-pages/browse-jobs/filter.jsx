@@ -34,7 +34,7 @@ const Search = () => {
     const theme = useTheme();
     const white = theme.palette.background.default;
     const lightBlue = theme.palette.neutral.light;
-    const darkBlue = theme.palette.primary.main;
+    const darkBlue = theme.palette.primary.dark;
     const mainBlue = theme.palette.primary.light;
     const h7 = theme.typography.h7;
     const h5 = theme.typography.h5bold;
@@ -46,7 +46,7 @@ const Search = () => {
     display: "flex",
     justifyContent: "center",
     backgroundColor: darkBlue,
-    borderRadius: "40px",
+    borderRadius: "20px",
     marginTop: isDesktopScreens ? "-3rem" : "-2.5rem",
     color: white,
     gap: theme.spacing(2),

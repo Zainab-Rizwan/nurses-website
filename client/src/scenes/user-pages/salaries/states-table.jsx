@@ -1,54 +1,82 @@
 import * as React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography, useMediaQuery } from '@mui/material';
+import { useTheme } from '@emotion/react';
 
 function createData(
   name: string,
   calories: number,
   fat: number,
-  carbs: number,
-  protein: number,
 ) {
-  return { name, calories, fat, carbs, protein };
+  return { name, calories, fat};
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('General HealthCare Resources', 159, 6.0),
+  createData('IMCS Group', 237, 9.0, ),
+  createData('Cross Country Healthcare', 262, 16.0, ),
+  createData('George Washington University Hospital', 305, 3.7, ),
+  createData('Houston Methodist', 356, 16.0,),
 ];
 
 export default function StatesTable() {
+  const theme = useTheme();
+  const darkGray = theme.palette.neutral.dark;
+  const darkBlue = theme.palette.primary.dark;
+  const h5 = theme.typography.h5;
+  const h3bold = theme.typography.h3bold;
+  const h5bold = theme.typography.h5bold;
+  const h6bold = theme.typography.h6bold;
+  const h6bolder = theme.typography.h6bolder;
+  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Box sx={{ marginTop: theme.spacing(6)}}>
+      <Box sx={{  marginLeft: "10%", marginRight:"10%",  }}>
+        <Typography
+          sx={{ 
+            fontSize: h3bold,
+            color: darkBlue, 
+          }}>
+        Top Paying States
+        </Typography>
+        <Typography
+            sx={{
+              fontSize: h5,
+              color: darkGray,
+              my: 3,
+              mt: 1
+            }}
+          >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas arcu vitae ipsum volutpat mattis. 
+          Sed pulvinar pretium luctus. Sed ut enim in ipsum elementum ultricies id eu justo. 
+          </Typography>
+        </Box>
+        <Box sx={{  marginLeft: "10%", marginRight:"10%"}}>
+        <TableContainer component={Paper} elevation={9} >
+      <Table >
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell sx={{fontSize: h5bold, color: darkBlue}} > State</TableCell>
+            <TableCell sx={{fontSize: h5bold, color: darkBlue}} align="center">Average Hourly Salary</TableCell>
+            <TableCell sx={{fontSize: h5bold, color: darkBlue}} align="center">Maximum Hourly Salary</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx={{fontSize: h6bold}} > 
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell sx={{fontSize: h6bold}} align="center">{row.calories}</TableCell>
+              <TableCell sx={{fontSize: h6bold}} align="center">{row.fat}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+      </Box>
+    </Box>
   );
 }
