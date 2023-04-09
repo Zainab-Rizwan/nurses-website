@@ -7,6 +7,7 @@ import Guide from './guide';
 import Header from './header';
 import Search from './filter';
 import Jobs from './jobs';
+import Carousel from './jobs';
 
 const BrowseJobs = () => {
     return (
@@ -15,7 +16,7 @@ const BrowseJobs = () => {
       <Header />
       <Search />
       <Guide />
-      <Jobs />
+      <Carousel />
       <Footer/>
     </Box> 
     );

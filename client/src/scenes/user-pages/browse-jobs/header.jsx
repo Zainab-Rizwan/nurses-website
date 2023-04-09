@@ -4,12 +4,14 @@ import React from "react";
 import Button from "shared/Button";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
+import Images from "constants/ImgConstants";
 
 const Header = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const white= theme.palette.background.default;
   const primaryDark = theme.palette.primary.dark;
+  const primaryLight = theme.palette.primary.light;
   const h1 = theme.typography.h1;
   const h2 = theme.typography.h2;
   const h4bold = theme.typography.h4bold;
@@ -24,7 +26,7 @@ const Header = () => {
   }));
 
   return (
-    <Box sx={{ backgroundColor: white}}>
+    <Box sx={{ backgroundColor: primaryLight }}>
       <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center"}}>
         <CustomBox>
           <Typography sx={{fontSize: isDesktopScreens ? h1 : isTabletScreens ? h1 : h2,  color: primaryDark, }}>
@@ -35,11 +37,8 @@ const Header = () => {
             </Typography>
         </CustomBox>
       </Container>
-      </Box>
+    </Box>
   );
 };
 
 export default Header;
-
-
-

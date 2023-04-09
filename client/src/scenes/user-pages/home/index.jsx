@@ -4,10 +4,11 @@ import Navbar from "shared/NavBar/navbar";
 import Footer from 'shared/Footer/footer';
 import { Box} from '@mui/material';
 import Hero from './hero';
-import MoreInfo from './moreinfo';
 import About from './about';
 import Map from './map';
 import Details from './details';
+import Applicants from './applicants';
+import Recruiters from './recruiters';
 
 const Home = () => {
     return (
@@ -16,8 +17,9 @@ const Home = () => {
       <Hero />
       <About />
       <Map />
-      <MoreInfo />
+      <Applicants/>
       <Details />
+      <Recruiters />
       <Footer/>
     </Box> 
     );

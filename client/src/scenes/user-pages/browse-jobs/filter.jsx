@@ -46,10 +46,10 @@ const currencies = [
     justifyContent: "center",
     backgroundColor: darkBlue,
     borderRadius: "40px",
-    marginTop: "-2.5rem",
+    marginTop: isDesktopScreens ? "-4rem" : "-2.5rem",
     color: white,
     gap: theme.spacing(2),
-    
+
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -79,81 +79,48 @@ const currencies = [
     };
 
   return (
-    <CustomBox gap={2} margin={"10%"} sx={{ p:2}}>
-          <FormControl sx={{ minWidth: "18rem"}}>
-          <InputLabel>Select discipline</InputLabel>
-          <Select
-            label="Select discipline"
-            multiple
-            value={selectedValues1}
-            onChange={handleChange1}
-            renderValue={(selected) => (
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} style={{ marginRight: 5, backgroundColor: lightBlue }} />
-                ))}
-              </div>
-            )}
-            autoWidth
-          >
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-        </FormControl>
-
-          <FormControl sx={{ minWidth: "18rem"}}>
-            <InputLabel>Select specialty</InputLabel>
-            <Select
-            label="Select specialty"
-            multiple
-            value={selectedValues2}
-            onChange={handleChange2}
-            renderValue={(selected) => (
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} style={{ marginRight: 5, backgroundColor: lightBlue }} />
-                ))}
-              </div>
-            )}
-          >
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-          </FormControl>
-          <FormControl sx={{ minWidth: "18rem"}}>
-            <InputLabel>Select location</InputLabel>
-            <Select
-            label="Select location"
-            multiple
-            value={selectedValues3}
-            onChange={handleChange3}
-            renderValue={(selected) => (
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} style={{ marginRight: 5, backgroundColor: lightBlue }} />
-                ))}
-              </div>
-            )}
-            autoWidth
-          >
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-          </FormControl>
-
-          <TextField
-          id="standard-select-currency-native"
+    <CustomBox gap={2} marginLeft={"10%"} marginRight={"10%"} sx={{ p:2, color: "#FFFFFF"}}>
+        <TextField
           select
           label="Native select"
-          defaultValue="EUR"
+          defaultValue=""
           SelectProps={{
             native: true,
           }}
-          helperText="Please select your currency"
           variant="standard"
+          sx={{ minWidth: "15rem"}}
+        >
+          {currencies.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </TextField>
+        <TextField
+          select
+          label="Native select"
+          defaultValue=""
+          SelectProps={{
+            native: true,
+          }}
+          variant="standard"
+          sx={{ minWidth: "15rem"}}
+        >
+          {currencies.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </TextField>
+        <TextField
+          select
+          label="Native select"
+          defaultValue=""
+          SelectProps={{
+            native: true,
+          }}
+          variant="standard"
+          sx={{ minWidth: "15rem"}}
         >
           {currencies.map((option) => (
             <option key={option.value} value={option.value}>

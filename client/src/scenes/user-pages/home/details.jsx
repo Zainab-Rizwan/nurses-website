@@ -37,7 +37,6 @@ const Details = () => {
   const white = theme.palette.background.default;
   const lightBlue = theme.palette.neutral.light;
   const darkBlue = theme.palette.primary.main;
-  const mainBlue = theme.palette.primary.light;
   const h7 = theme.typography.h7;
   const h5 = theme.typography.h5bold;
   const isTabletScreens = useMediaQuery("(min-width: 768px)");
@@ -163,7 +162,7 @@ const Details = () => {
             <Tooltip />
             <Legend />
             <Bar dataKey="value1" stackId="a" fill= {darkBlue} />
-            <Bar dataKey="value2" stackId="a" fill= {mainBlue}/>
+            <Bar dataKey="value2" stackId="a" fill= {"#bad1d7"}/>
           </BarChart>
         </Box>
         </Grid>

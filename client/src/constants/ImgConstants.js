@@ -4,10 +4,8 @@ let Images = {
     AUTH_IMG: require("../assets/images/image-1.jpg"),
     MORE_INFO_1: require("../assets/images/more-info-2.jpg"),
     MORE_INFO_2: require("../assets/images/more-info-4.jpg"),
-    HEADER_IMG: require("../assets/images/more-info-3.jpg"),
-
-
-
+    HEADER_IMG: require("../assets/images/auth-img-2.jpg"),
+    CARD_IMG: require("../assets/images/card-img.jpg"),
 };
   
 export default Images;

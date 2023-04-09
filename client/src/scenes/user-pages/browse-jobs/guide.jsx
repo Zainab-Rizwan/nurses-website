@@ -18,7 +18,7 @@ const Guide = () => {
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
   const CustomBox = styled(Box)(({ theme }) => ({
-    width: "40%",
+    maxWidth: "90%",
     [theme.breakpoints.down("md")]: {
       width: "95%",
     },
@@ -59,8 +59,8 @@ const Guide = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        mt: 0,
         marginTop: "2rem",
+        marginBottom: "2em",    
       }}>
         
       <Typography
@@ -89,7 +89,7 @@ const Guide = () => {
 
       <GuidesBox>
       <GuideBox>
-        <Card sx={{Width: isDesktopScreens ? 345 : 300 }}>
+        <Card elevation={9} sx={{Width: isDesktopScreens ? 345 : 300 }}>
         <CardContent>
         <Typography
           sx={{
@@ -112,7 +112,7 @@ const Guide = () => {
       </GuideBox>
 
       <GuideBox>
-      <Card sx={{Width: isDesktopScreens ? 345 : 300 }}>
+      <Card elevation={9} sx={{Width: isDesktopScreens ? 345 : 300 }}>
       <CardContent>
         <Typography
           sx={{
@@ -136,7 +136,7 @@ const Guide = () => {
     </GuideBox>
 
     <GuideBox>
-    <Card sx={{Width: isDesktopScreens ? 345 : 300 }}>
+    <Card elevation={9} sx={{Width: isDesktopScreens ? 345 : 300 }}>
       <CardContent>
       <Typography
         sx={{
