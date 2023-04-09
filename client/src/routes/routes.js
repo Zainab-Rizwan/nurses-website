@@ -14,6 +14,7 @@ import ForgotPassword from 'scenes/auth-pages/forgot-password';
 import BrowseJobs from 'scenes/user-pages/browse-jobs';
 import AccoutSetUp from 'scenes/auth-pages/account-setup';
 import OTP from 'scenes/auth-pages/otp';
+import ViewJobs from 'scenes/user-pages/view-jobs';
 
 export const MyRoutes = [
     { path: "/", element: <Home />},
@@ -31,4 +32,5 @@ export const MyRoutes = [
     { path: "/forgot-password", element: <ForgotPassword />},
     { path: "/account-setup", element: <AccoutSetUp />},
     { path: "/otp", element: <OTP />},
+    { path: "/view-jobs", element: <ViewJobs />},
 ]

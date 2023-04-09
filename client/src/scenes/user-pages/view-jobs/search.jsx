@@ -7,6 +7,7 @@ import Images from 'constants/ImgConstants';
 import { IconButton, InputAdornment } from '@mui/material';
 import { useState } from 'react';
 import { SearchOutlined } from '@mui/icons-material';
+import './index.scss';
 
 const Search = () => {
   const disciplines = [
@@ -46,7 +47,6 @@ const Search = () => {
     display: "flex",
     justifyContent: "center",
     borderRadius: "20px",
-    marginTop:theme.spacing(-6),
     color: white,
     gap: theme.spacing(2),
 
@@ -79,7 +79,9 @@ const Search = () => {
     };
 
   return (
-    <CustomBox component={Paper} elevation={9} marginLeft={"8%"} marginRight={"8%"} sx={{ p:2.5, color:darkGray}}>
+    <Box component={Paper} elevation={9} marginLeft={"8%"} marginRight={"8%"}  >
+    <CustomBox  sx={{ marginTop:theme.spacing(-6), p: 2.5,
+}}>
     <Grid container spacing={2} alignItems="center" color="white">
       <Grid item xs={12} sm={4} >
       <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray'}}>
@@ -198,6 +200,15 @@ const Search = () => {
       </FormControl>
     </Grid>
     </Grid>
+    </CustomBox>
+    <CustomBox sx={{paddingLeft: 2.5, paddingRight: 2.5, paddingBottom: 2.5}}>
+      <TextField
+      id="search-field"
+      label="Search"
+      variant="outlined"
+      fullWidth
+      sx={{ color: darkGray, fontSize: h5bold}}
+    />
     <Button className="search-button" value="Search" 
     sx={{ 
       padding: "10px 30px",
@@ -218,6 +229,7 @@ const Search = () => {
       Search 
     </Button>
     </CustomBox>
+    </Box>
   );
 };
 
