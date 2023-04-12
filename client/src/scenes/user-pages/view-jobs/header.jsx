@@ -1,15 +1,10 @@
 import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import Button from "shared/Button";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
-import Images from "constants/ImgConstants";
 
 const Header = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
-  const white= theme.palette.background.default;
   const primaryDark = theme.palette.primary.dark;
   const primaryLight = theme.palette.primary.light;
   const h1 = theme.typography.h1;

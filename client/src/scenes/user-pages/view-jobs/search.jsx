@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { styled, CssBaseline, TextField, Button, FormControlLabel, Checkbox, Link, Paper, Box, Grid, Typography, Card, useMediaQuery, FormControl, InputLabel, Select, Chip, MenuItem } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { styled, TextField, Button, Paper, Box, Grid, FormControl, InputLabel, Select, Chip, MenuItem } from '@mui/material';
 import { useTheme } from '@emotion/react';
-import { ThemeProvider } from '@emotion/react';
-import Images from 'constants/ImgConstants';
-import { IconButton, InputAdornment } from '@mui/material';
 import { useState } from 'react';
 import { SearchOutlined } from '@mui/icons-material';
 import './index.scss';
@@ -34,19 +30,14 @@ const Search = () => {
     const theme = useTheme();
     const white = theme.palette.background.default;
     const lightBlue = theme.palette.neutral.light;
-    const darkBlue = theme.palette.primary.dark;
     const mainBlue = theme.palette.primary.main;
     const darkGray = theme.palette.neutral.dark;
-    const h7 = theme.typography.h7;
     const h5 = theme.typography.h5bold;
     const h5bold = theme.typography.h5bolder;
-    const isTabletScreens = useMediaQuery("(min-width: 768px)");
-    const isDesktopScreens = useMediaQuery("(min-width: 800px)");
 
     const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
-    borderRadius: "20px",
     color: white,
     gap: theme.spacing(2),
 
@@ -79,7 +70,7 @@ const Search = () => {
     };
 
   return (
-    <Box component={Paper} elevation={9} marginLeft={"8%"} marginRight={"8%"}  >
+    <Box component={Paper} elevation={9} marginLeft={"8%"} marginRight={"8%"} sx={{borderRadius: "20px"}} >
     <CustomBox  sx={{ marginTop:theme.spacing(-6), p: 2.5,
 }}>
     <Grid container spacing={2} alignItems="center" color="white">
@@ -212,9 +203,7 @@ const Search = () => {
     <Button className="search-button" value="Search" 
     sx={{ 
       padding: "10px 30px",
-      border: "none",
       border: `1px solid ${mainBlue}`,
-      borderColor : mainBlue,
       transition: "all 0.4s",
       cursor: "pointer",
       backgroundColor: mainBlue,

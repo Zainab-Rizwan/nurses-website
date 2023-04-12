@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
-import Images from 'constants/ImgConstants';
-
 
 function Copyright(props) {
   return (

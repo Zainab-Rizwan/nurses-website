@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography, useMediaQuery } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 
 function createData(
@@ -26,8 +26,6 @@ export default function StatesTable() {
   const h3bold = theme.typography.h3bold;
   const h5bold = theme.typography.h5bold;
   const h6bold = theme.typography.h6bold;
-  const h6bolder = theme.typography.h6bolder;
-  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
   return (
     <Box sx={{ marginTop: theme.spacing(6)}}>

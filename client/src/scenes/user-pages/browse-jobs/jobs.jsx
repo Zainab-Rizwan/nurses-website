@@ -1,6 +1,5 @@
 import { Box, styled, Typography, useMediaQuery, Grid} from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import Images from "constants/ImgConstants";
 import JobCard from "shared/Job-Cards";
@@ -23,7 +22,6 @@ const cards = [
 export default function Carousel(props){
   const { initialSlide } = props;
 
-  const navigate = useNavigate();
   const theme = useTheme();
   const mainBlue = theme.palette.primary.main ;
   const darkGray = theme.palette.neutral.dark;
@@ -31,7 +29,6 @@ export default function Carousel(props){
   const h2 = theme.typography.h2;  
   const h5 = theme.typography.h5;
   const h3bold = theme.typography.h3bold;
-  const h5bold = theme.typography.h5bold;
   const h6bold = theme.typography.h6bold;
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 

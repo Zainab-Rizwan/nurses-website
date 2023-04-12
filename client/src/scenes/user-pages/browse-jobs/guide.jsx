@@ -13,7 +13,6 @@ const Guide = () => {
   const h2 = theme.typography.h2;
   const h3bold = theme.typography.h3bold;
   const h4bold = theme.typography.h4bold;
-  const h5bold = theme.typography.h5bold;
   const h6 = theme.typography.h6;
   const h5 = theme.typography.h5;
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");

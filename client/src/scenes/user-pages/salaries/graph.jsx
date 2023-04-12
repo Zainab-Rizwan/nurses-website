@@ -1,16 +1,8 @@
-import { Box, styled, Typography, useMediaQuery, Grid, FormControl, CssBaseline, Paper, TextField, InputLabel, Select, MenuItem} from "@mui/material";
+import { Box, styled, Typography, useMediaQuery, Paper, } from "@mui/material";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
-import Images from "constants/ImgConstants";
-import JobCard from "shared/Job-Cards";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useState, useEffect, useRef } from 'react';
 import './index.scss';
-import Button from "shared/Button";
 const data = [
   {
     name: 'Category 1',
@@ -39,29 +31,18 @@ const data = [
   },
 ];
 
-
-
 const Graph = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
   const mainBlue = theme.palette.primary.main ;
   const darkGray = theme.palette.neutral.dark;
   const darkBlue = theme.palette.primary.dark;
-  const primaryMain = theme. palette.primary.main;
-  const white = theme. palette.neutral.default;
+  const primaryMain = theme.palette.primary.main;
   const h1 = theme.typography.h1;  
-  const h2 = theme.typography.h2;  
   const h5 = theme.typography.h5;
   const h7 = theme.typography.h7;
   const h3bold = theme.typography.h3bold;
-  const h5bold = theme.typography.h5bold;
-  const h6bold = theme.typography.h6bold;
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
   const isTabletScreens = useMediaQuery("(min-width: 508px)");
-
-  const CustomImage = styled('img')(({ theme }) => ({
-    maxWidth: "100%",
-  }));
 
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -76,7 +57,7 @@ const Graph = () => {
   
 
   return (
-    <Box  component={Paper} elevation={9} sx={{  marginLeft: "10%", marginRight:"10%", marginTop: theme.spacing(8), p:3 }}>
+    <Box  component={Paper} elevation={9} sx={{  marginLeft: "10%", marginRight:"10%", marginTop: theme.spacing(4), p:3 }}>
     <CustomBox>
         <Box  sx={{ flex: "1.25", p:3 }} >
         <Typography

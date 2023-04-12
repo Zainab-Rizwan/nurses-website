@@ -1,11 +1,9 @@
-import { Box, styled, Typography, useMediaQuery, Grid, Pagination, PaginationItem } from "@mui/material";
+import { Box, styled, Typography, useMediaQuery, Grid, Pagination} from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import Images from "constants/ImgConstants";
 import JobCard from "shared/Job-Cards";
-import { useState, useEffect, useRef } from 'react';
-import ReactPaginate from 'react-paginate';
+import { useState } from 'react';
 
 const cards = [
   { image: Images.CARD_IMG, title: 'New York City, NY', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
@@ -27,7 +25,6 @@ const cards = [
 
 
 export default function AllJobs(props){
-  const navigate = useNavigate();
   const theme = useTheme();
   const mainBlue = theme.palette.primary.main ;
   const darkGray = theme.palette.neutral.dark;
@@ -35,11 +32,9 @@ export default function AllJobs(props){
   const h2 = theme.typography.h2;  
   const h5 = theme.typography.h5;
   const h3bold = theme.typography.h3bold;
-  const h5bold = theme.typography.h5bold;
   const h6bold = theme.typography.h6bold;
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
-  const { initialSlide } = props;
   const [currentPage, setCurrentPage] = useState(0);
   const cardsPerPage = 12;
   const totalPages = Math.ceil(cards.length / cardsPerPage);

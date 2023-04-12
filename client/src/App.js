@@ -1,9 +1,7 @@
-import React, { useMemo } from "react";
-import RouterConfig from "routes/Router";
-import { createTheme } from "@mui/system";
+import React from "react";
+import RouterConfig from "./routes/Router";
 import { ThemeProvider } from "@mui/system";
 import { themeSettings } from "theme";
-import Navbar from "shared/NavBar/navbar";
 import "assets/scss/globalStyleSheet.scss";
 
 

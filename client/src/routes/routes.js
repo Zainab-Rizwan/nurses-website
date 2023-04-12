@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Account from 'scenes/employer-pages/account';
 import Applicants from 'scenes/employer-pages/applicants';
 import Dashboard from 'scenes/employer-pages/dashboard';

@@ -15,8 +15,8 @@ import {
   Menu,
   Close,
 } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { setLogin, setLogout } from "state";
+import { useDispatch } from "react-redux";
+import { setLogout } from "state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "shared/FlexBetween/FlexBetween";
 import { Link } from 'react-router-dom';
@@ -30,7 +30,6 @@ const Navbar = () => {
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
-  const primaryLight = theme.palette.primary.light;
   const primary = theme.palette.neutral.main;
   const primaryMain = theme.palette.primary.main;
   const neutralDark =  theme.palette.neutral.alt;

@@ -6,7 +6,6 @@ import { Box} from "@mui/material";
 import Guide from './guide';
 import Header from './header';
 import Search from './filter';
-import Jobs from './jobs';
 import Carousel from './jobs';
 
 const BrowseJobs = () => {

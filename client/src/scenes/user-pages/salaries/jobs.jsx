@@ -79,7 +79,7 @@ export default function TopJobs(props){
 
 
   return (
-    <Box>
+    <Box sx={{  mb: theme.spacing(8)}}>
       <Box sx={{ my: theme.spacing(8), marginTop: theme.spacing(6) }}>         
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%" }}>
             <Typography

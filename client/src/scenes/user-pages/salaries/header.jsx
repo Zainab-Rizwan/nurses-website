@@ -1,9 +1,7 @@
-import { Box, styled, Typography, useMediaQuery, Grid, FormControl, InputLabel, MenuItem, Select, } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Typography, useMediaQuery, Grid, FormControl, InputLabel, MenuItem, Select, } from "@mui/material";
 import React from "react";
 import Button from "shared/Button";
 import Images from "constants/ImgConstants";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import { useState } from "react";
 
@@ -20,17 +18,12 @@ const Header = () => {
     setSelectedValue(event.target.value);
   };
 
-  const navigate = useNavigate();
   const theme = useTheme();
-  const neutralDark = theme.palette.neutral.dark;
   const primaryDark = theme.palette.primary.dark;
   const h1 = theme.typography.h1;
   const h2 = theme.typography.h2;
-  const h3bold = theme.typography.h3bold;
   const h4bold = theme.typography.h4bold;
-  const h4light = theme.typography.h4light;
   const h5bold = theme.typography.h5bold;
-  const h6bold = theme.typography.h6bold;
   const isTabletScreens = useMediaQuery("(min-width: 900px)");
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
@@ -68,7 +61,7 @@ const Header = () => {
         </Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-evenly', gap: isDesktopScreens ? 0.75 : 1, mt: isDesktopScreens ? theme.spacing(4) : theme.spacing(2)}}>
-        <FormControl >
+        <FormControl sx={{minWidth:"10rem"}} >
           <InputLabel>Select a discipline</InputLabel>
           <Select label="Select a discipline" value={selectedValue} onChange={handleChange} fullWidth>
             {disciplines.map((discipline) => (
@@ -80,8 +73,6 @@ const Header = () => {
         </FormControl>
         <Button value="Compare Pay" sx={{display: "flex", flexWrap:"no wrap"}} />
       </Box>
-
-
       </Grid>
     </Grid>
     </Box>
