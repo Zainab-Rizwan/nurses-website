@@ -81,11 +81,6 @@ export const themeSettings = createTheme({
           fontWeight:700,
           fontSize: 16,
         },
-        h6bold: {
-          fontFamily: ["DM Sans", "sans-serif"].join(","),
-          fontWeight:500,
-          fontSize: 14,
-        },
         h6: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontSize: 14,
@@ -94,6 +89,11 @@ export const themeSettings = createTheme({
         h6bolder: {
           fontFamily: ["DM Sans", "sans-serif"].join(","),
           fontWeight:700,
+          fontSize: 14,
+        },
+        h6bold: {
+          fontFamily: ["DM Sans", "sans-serif"].join(","),
+          fontWeight:500,
           fontSize: 14,
         },
         h7: {

@@ -1,31 +1,27 @@
-import { Box, Typography, useMediaQuery, Grid, FormControl, InputLabel, MenuItem, Select, } from "@mui/material";
+import { Box, Typography, useMediaQuery, Grid, FormControl, Chip, Autocomplete, TextField } from "@mui/material";
 import React from "react";
-import Button from "shared/Button";
+import SharedButton from "shared/Button";
 import Images from "constants/ImgConstants";
 import { useTheme } from '@emotion/react';
 import { useState } from "react";
 
-const disciplines = [
-    {value: 'Monitor Technician', },
-    {value: 'Surgical First Assistant',},
-    {value: 'Paramedic',},
-    { value: 'Histology Technician',},
-  ];
+const disciplines = ['Monitor Technician', 'Surgical First Assistant', 'Paramedic', 'Histology Technician'];
 
 const Header = () => {
-  const [selectedValue, setSelectedValue] = useState("");
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
   const theme = useTheme();
   const primaryDark = theme.palette.primary.dark;
   const h1 = theme.typography.h1;
   const h2 = theme.typography.h2;
+  const darkGray = theme.palette.neutral.dark;
   const h4bold = theme.typography.h4bold;
   const h5bold = theme.typography.h5bold;
-  const isTabletScreens = useMediaQuery("(min-width: 900px)");
+  const isTabletScreens = useMediaQuery("(min-width: 990px)");
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
+
+  const [selectedOptions1, setSelectedOptions1] = useState([]);
+  const handleOptionSelect1 = (event, values) => {
+    setSelectedOptions1(values);
+  };
 
   return (
     <Box sx={{ mb: 4}}>
@@ -39,10 +35,10 @@ const Header = () => {
       </Grid>
       <Grid item xs={12} md={3} 
       sx={{ 
-        mt: isDesktopScreens ? 5 :  isTabletScreens ? 4 : 3, 
-        marginLeft: isDesktopScreens ? "0%" : isTabletScreens ? "0%" : "10%",  
-        marginRight:  isDesktopScreens ? "0%" : isTabletScreens ? "0%" : "10%",  
-        textAlign: isDesktopScreens ? "left" : isTabletScreens ? "left" : "center"
+        mt: isDesktopScreens ? 5 :  isTabletScreens ? 3 : 3, 
+        marginLeft: isDesktopScreens ? "0%" : isTabletScreens ? "10%" : "10%",  
+        marginRight:  isDesktopScreens ? "0%" : isTabletScreens ? "10%" : "10%",  
+        textAlign: isDesktopScreens ? "left" : isTabletScreens ? "center" : "center"
         }}>
         <Typography sx={{ 
             fontSize: isDesktopScreens ? h1 : isTabletScreens ? h1 : h2, 
@@ -60,19 +56,46 @@ const Header = () => {
         comprehensive salary calculator
         </Typography>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-evenly', gap: isDesktopScreens ? 0.75 : 1, mt: isDesktopScreens ? theme.spacing(4) : theme.spacing(2)}}>
-        <FormControl sx={{minWidth:"10rem"}} >
-          <InputLabel>Select a discipline</InputLabel>
-          <Select label="Select a discipline" value={selectedValue} onChange={handleChange} fullWidth>
-            {disciplines.map((discipline) => (
-              <MenuItem key={discipline.value} value={discipline.value}>
-                {discipline.value}
-              </MenuItem>
-            ))}
-          </Select>
+        <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", mb:2}}>
+         <Autocomplete
+          ListboxProps={{
+            style: { maxHeight: '200px' },
+          }}
+          multiple
+          options={disciplines}
+          value={selectedOptions1}
+          onChange={handleOptionSelect1}
+          limitTags={1}
+          getLimitTagsText={(more) => `+${more}`}
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip
+                key={option}
+                label={option}
+                sx={{ borderRadius:"2px",  }}
+                onDelete={() => {
+                  const newSelectedOptions1 = [...selectedOptions1];
+                  newSelectedOptions1.splice(index, 1);
+                  setSelectedOptions1(newSelectedOptions1);
+                }}
+                {...getTagProps({ index })}
+              />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="outlined"
+              label="Disciplines"
+              InputLabelProps={{
+                style: { color: darkGray, fontWeight: 500, fontSize:"16px", maxHeight: "20px" }
+              }}
+            />
+          )}
+        />
         </FormControl>
-        <Button value="Compare Pay" sx={{display: "flex", flexWrap:"no wrap"}} />
-      </Box>
+       
+      <SharedButton value="Compare Pay" onClick="" />
       </Grid>
     </Grid>
     </Box>

@@ -1,40 +1,18 @@
 import * as React from 'react';
-import { styled, Box, Grid, FormControl, InputLabel, Select, Chip, MenuItem } from '@mui/material';
+import { styled, Box, Grid, FormControl, Chip, Autocomplete, TextField } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { useState } from 'react';
+import { useEffect } from 'react';
+
+const disciplines = ['Monitor Technician', 'Surgical First Assistant', 'Paramedic', 'Histology Technician'];
+const specialties = ['CT Technologist', 'Surgical Technologist', 'UltraSound Technologist', 'Cath Lab Technologist'];
+const locations = ['Arizona', 'California', 'Indiana', 'Illinois'];
+const jobTypes = ['Part Time', 'Full Time']
 
 const Search = () => {
-  const disciplines = [
-    {value: 'Monitor Technician', },
-    {value: 'Surgical First Assistant',},
-    {value: 'Paramedic',},
-    { value: 'Histology Technician',},
-  ];
-
-  const specialties = [
-    {value: 'CT Technologist', },
-    {value: 'Surgical Technologist',},
-    {value: 'UltraSound Technologist',},
-    { value: 'Cath Lab Technologist',},
-  ];
-
-  const locations = [
-    {value: 'Arizona', },
-    {value: 'California',},
-    {value: 'Illinois',},
-    { value: 'Indiana',},
-  ];
-
-  const jobTypes = [
-    {value: 'Part Time', },
-    {value: 'Full Time',},
-  ];
-
     const theme = useTheme();
     const white = theme.palette.background.default;
-    const lightBlue = theme.palette.neutral.light;
     const darkGray = theme.palette.neutral.dark;
-    const h5 = theme.typography.h5bold;
 
     const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -52,186 +30,201 @@ const Search = () => {
     
   }));
 
-    const [selectedValues1, setSelectedValues1] = useState([]);
-    const [selectedValues2, setSelectedValues2] = useState([]);
-    const [selectedValues3, setSelectedValues3, ] = useState([]);
-    const [selectedValues4, setSelectedValues4, ] = useState([]);
-  
-  
-    const handleChange1 = (event) => {
-      const { value } = event.target;
-      setSelectedValues1(value);
-    };
-  
-    const handleChange2 = (event) => {
-      const { value } = event.target;
-      setSelectedValues2(value);
-    };
-  
-    const handleChange3 = (event) => {
-      const { value } = event.target;
-      setSelectedValues3(value);
-    };
+  const [selectedOptions1, setSelectedOptions1] = useState([]);
+  const [selectedOptions2, setSelectedOptions2] = useState([]);
+  const [selectedOptions3, setSelectedOptions3] = useState([]);
+  const [selectedOptions4, setSelectedOptions4] = useState([]);
+  const [isSpecialtiesEnabled, setIsSpecialtiesEnabled] = useState(false);
 
-    const handleChange4 = (event) => {
-        const { value } = event.target;
-        setSelectedValues4(value);
-      };
-  
+  const handleOptionSelect1 = (event, values) => {
+    setSelectedOptions1(values);
+    setIsSpecialtiesEnabled(values.length > 0);
+  };
+
+  const handleOptionSelect2 = (event, values) => {
+    setSelectedOptions2(values);
+  };
+    
+  const handleOptionSelect3 = (event, values) => {
+    setSelectedOptions3(values);
+  };
+
+  const handleOptionSelect4 = (event, values) => {
+    setSelectedOptions4(values);
+  };  
+
+  useEffect(() => {
+    if (!isSpecialtiesEnabled) {
+      setSelectedOptions2([]);
+    }
+  }, [isSpecialtiesEnabled]);
+
 
   return (
     <CustomBox marginLeft={"10%"} marginRight={"10%"} sx={{color:darkGray}}>
     <Grid container spacing={2} alignItems="center" color="white">
       <Grid item xs={12} sm={3} >
-      <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray'}}>
-      <InputLabel sx={{ color: darkGray, fontSize: h5}}>Discipline</InputLabel>
-      <Select
-        style={{borderRadius:"5px"}}
-        multiple
-        label="Select a discipline"
-        value={selectedValues1}
-        onChange={handleChange1}
-          renderValue={(selected) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} style={{ marginRight: 5, marginTop:5, backgroundColor: lightBlue }} />
-                ))}
-            </div>
-          )}
-          sx={{
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor:'lightgray'
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            }
+      <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray',  position: "relative",}}>
+      <Autocomplete
+          ListboxProps={{
+            style: { maxHeight: '200px' },
           }}
-        >
-    {disciplines.map((disciplines) => (
-      <MenuItem key={disciplines.value} value={disciplines.value}>
-        {disciplines.value}
-      </MenuItem>
-    ))}
-    </Select>
-  </FormControl>
+          multiple
+          options={disciplines}
+          value={selectedOptions1}
+          onChange={handleOptionSelect1}
+          limitTags={1}
+          getLimitTagsText={(more) => `+${more}`}
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+        <Chip
+          key={option}
+          label={option}
+          sx={{ borderRadius:"2px",  }}
+          onDelete={() => {
+            const newSelectedOptions1 = [...selectedOptions1];
+            newSelectedOptions1.splice(index, 1);
+            setSelectedOptions1(newSelectedOptions1);
+          }}
+          {...getTagProps({ index })}
+        />
+      ))
+    }
+    renderInput={(params) => (
+      <TextField
+        {...params}
+        variant="outlined"
+        label="Disciplines"
+        InputLabelProps={{
+          style: { color: darkGray, fontWeight: 500, fontSize:"16px", maxHeight: "20px" }
+        }}
+      />
+    )}
+  />
+      </FormControl>
 
     </Grid>
     <Grid item xs={12} sm={3}>
-      <FormControl fullWidth>
-        <InputLabel sx={{ color: darkGray, fontSize: h5}}>Specialty</InputLabel>
-        <Select
-          style={{borderRadius:"5px"}}
-          multiple
-          label="Select a specialty"
-          value={selectedValues2}
-          onChange={handleChange2}
-          renderValue={(selected) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} style={{ marginRight: 5, marginTop:5, backgroundColor: lightBlue }} />
-                ))}
-            </div>
-          )}
-          renderValue={(selected) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} style={{ marginRight: 5, marginTop:5, backgroundColor: lightBlue }} />
-                ))}
-            </div>
-          )}
-          sx={{
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor:'lightgray'
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            }
+    <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", }}>
+      <Autocomplete
+          ListboxProps={{
+            style: { maxHeight: '200px' },
           }}
-        >
-          {specialties.map((specialties) => (
-            <MenuItem key={specialties.value} value={specialties.value}>
-              {specialties.value}
-            </MenuItem>
-          ))}
-        </Select>
+          multiple
+          options={specialties}
+          value={selectedOptions2}
+          onChange={handleOptionSelect2}
+          disabled={!isSpecialtiesEnabled}
+          limitTags={1}
+          getLimitTagsText={(more) => `+${more}`}
+          renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+              <Chip
+              sx={{ borderRadius:"2px"  }}
+                key={option}
+                label={option}
+                onDelete={() => {
+                  const newSelectedOptions2 = [...selectedOptions2];
+                  newSelectedOptions2.splice(index, 1);
+                  setSelectedOptions2(newSelectedOptions2);
+                }}
+                {...getTagProps({ index })}
+              />
+            ))
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="outlined"
+              label="Specialties"
+              InputLabelProps={{
+                style: { color: darkGray, fontWeight: 500, fontSize:"16px" }
+              }}
+            />
+          )}
+        />
+      </FormControl>
+    </Grid>
+
+
+    <Grid item xs={12} sm={3}>
+    <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", }}>
+      <Autocomplete
+      ListboxProps={{
+        style: { maxHeight: '200px' },
+      }}
+      multiple
+      options={locations}
+      value={selectedOptions3}
+      limitTags={1}
+      getLimitTagsText={(more) => `+${more}`}
+      onChange={handleOptionSelect3}
+      renderTags={(value, getTagProps) =>
+        value.map((option, index) => (
+          <Chip
+          sx={{ borderRadius:"2px"  }}
+            key={option}
+            label={option}
+            onDelete={() => {
+              const newSelectedOptions3 = [...selectedOptions3];
+              newSelectedOptions3.splice(index, 1);
+              setSelectedOptions3(newSelectedOptions3);
+            }}
+            {...getTagProps({ index })}
+          />
+        ))
+      }
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="outlined"
+          label="Location"
+          InputLabelProps={{
+            style: { color: darkGray, fontWeight: 500, fontSize:"16px" }
+          }}
+        />
+      )}
+    />
       </FormControl>
     </Grid>
     <Grid item xs={12} sm={3}>
-      <FormControl fullWidth>
-        <InputLabel sx={{ color: darkGray, fontSize: h5}}>Location</InputLabel>
-        <Select
-          style={{borderRadius:"5px"}}
-          multiple
-          label="Select a location"
-          value={selectedValues3}
-          onChange={handleChange3}
-          renderValue={(selected) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} style={{ marginRight: 5, marginTop:5, backgroundColor: lightBlue }} />
-                ))}
-            </div>
-          )}
-          sx={{
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor:'lightgray'
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            }
+    <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", }}>
+      <Autocomplete
+      ListboxProps={{
+        style: { maxHeight: '200px' },
+      }}
+      multiple
+      options={jobTypes}
+      value={selectedOptions4}
+      limitTags={1}
+      getLimitTagsText={(more) => `+${more}`}
+      onChange={handleOptionSelect4}
+      renderTags={(value, getTagProps) =>
+        value.map((option, index) => (
+          <Chip
+          sx={{ borderRadius:"2px"  }}
+            key={option}
+            label={option}
+            onDelete={() => {
+              const newSelectedOptions4 = [...selectedOptions4];
+              newSelectedOptions4.splice(index, 1);
+              setSelectedOptions4(newSelectedOptions4);
+            }}
+            {...getTagProps({ index })}
+          />
+        ))
+      }
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="outlined"
+          label="Job Type"
+          InputLabelProps={{
+            style: { color: darkGray, fontWeight: 500, fontSize:"16px" }
           }}
-        >
-          {locations.map((locations) => (
-            <MenuItem key={locations.value} value={locations.value}>
-              {locations.value}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Grid>
-    <Grid item xs={12} sm={3}>
-      <FormControl fullWidth>
-        <InputLabel sx={{ color: darkGray, fontSize: h5}}>Job Type</InputLabel>
-        <Select
-          style={{borderRadius:"5px"}}
-          multiple
-          label="Select a job type"
-          value={selectedValues4}
-          onChange={handleChange4}
-          renderValue={(selected) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} style={{ marginRight: 5, marginTop:5, backgroundColor: lightBlue }} />
-                ))}
-            </div>
-          )}
-          sx={{
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor:'lightgray'
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'lightgray'
-            }
-          }}
-        >
-          {jobTypes.map((jobTypes) => (
-            <MenuItem key={jobTypes.value} value={jobTypes.value}>
-              {jobTypes.value}
-            </MenuItem>
-          ))}
-        </Select>
+        />
+      )}
+    />
       </FormControl>
     </Grid>
     </Grid>

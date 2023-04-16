@@ -1,7 +1,7 @@
 import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import Button from "shared/Button";
+import SharedButton from "shared/Button";
 import Images from "constants/ImgConstants";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
@@ -72,7 +72,7 @@ const About = () => {
             >
              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
             </Typography>
-            <Button
+            <SharedButton
               value="Browse Jobs"
               onClick={() => navigate("/browse-jobs")}
             />

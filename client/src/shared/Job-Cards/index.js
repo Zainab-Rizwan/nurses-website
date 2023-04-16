@@ -1,19 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardActionArea, CardMedia, CardContent, Typography, Grid, IconButton, CardActions, styled, Box } from "@mui/material";
+import { Card, CardActionArea, CardMedia, CardContent, Typography, Grid, IconButton, CardActions, styled, Box, Button } from "@mui/material";
+import FlightIcon from '@mui/icons-material/Flight';
 import MoonIcon from '@mui/icons-material/NightsStay';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import Button from "shared/Button";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 
-const JobCard = ({ job }) => {
+const JobCard = ({ job, exclusive, travel }) => {
  const navigate = useNavigate();
  const theme = useTheme();
  const mainBlue = theme.palette.primary.main ;
+ const white = theme.palette.background.default ;
  const darkGray = theme.palette.neutral.dark;
  const darkBlue = theme.palette.primary.dark;
+ const lightBlue = theme.palette.neutral.main;
+ const h3 = theme.typography.h3;
  const h4bold = theme.typography.h4bold;
  const h6bold = theme.typography.h6bold;
  const h7bold = theme.typography.h7bold;
@@ -33,22 +36,47 @@ const JobCard = ({ job }) => {
 
   return (
     <GuideBox>
-    <Card sx={{ minWidth: 320 }} elevation={9}>
+    <Card sx={{ minWidth: 320, borderBottomLeftRadius:"0px", borderTopLeftRadius:"20px", borderTopRightRadius:"20px", borderBottomRightRadius:"20px"}} elevation={9}>
       <CardActionArea>
         <CardMedia component="img" height="140" image={image} />
-        <CardContent>
-          <Typography sx={{ fontSize: h4bold, color: darkBlue, my: 0.5 }}>{title}
-          <Box>
-             <Typography
-              sx={{ fontSize: h6bolder, color: mainBlue, display: "inline-block",}}
+        {exclusive && (
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "0",
+                backgroundColor: lightBlue,
+                color: "white",
+                padding: "0.25rem",
+                paddingRight: "0.75rem",
+                paddingLeft: "0.75rem",
+                borderRadius: "40px",
+                margin: "0.75rem",
+                fontSize: h6bold,
+                zIndex: "1",
+              }}
             >
-              {text}
+              Exclusive
             </Typography>
-          </Box>
-           
-          </Typography>
-          <Typography sx={{ fontSize: h6bold, color: darkGray }}>{textone}</Typography>
-        </CardContent>
+          )}
+      <CardContent>
+        <Typography
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: h4bold,
+            color: darkBlue,
+            my: 0.5,
+          }}
+        >
+          {title}
+          {travel && <FlightIcon sx={{ fontSize: h3, color: darkGray, transform: 'rotate(45deg)' }} />}
+        </Typography>
+        <Box>
+          <Typography sx={{ fontSize: h6bolder, color: mainBlue }}>{text}</Typography>
+        </Box>
+        <Typography sx={{ fontSize: h6bold, color: darkGray }}>{textone}</Typography>
+      </CardContent>
       </CardActionArea>
       <Grid container alignItems="center" sx={{ ml: 1, mt: 3 }}>
         <Grid item xs={4}>
@@ -88,8 +116,27 @@ const JobCard = ({ job }) => {
           </Grid>
         </Grid>
       </Grid>
-      <CardActions sx={{ mt: 0 }}>
-        <Button value="Apply Now" onClick={() => navigate("/browse-jobs")} />
+      <CardActions sx={{ margin:-1, mt: 1 }}>
+        <Button 
+        fullWidth
+        variant="contained"
+        sx={{
+          padding: "10px 30px",
+          border: "none",
+          borderColor : darkBlue,
+          color: white,
+          transition: "all 0.4s",
+          cursor: "pointer",
+          backgroundColor: mainBlue,
+          fontSize: h6bold,
+          wordSpacing: "2px",
+          "&:hover": {
+            backgroundColor:"#103d49",
+          },
+        }}
+        onClick={() => navigate("/browse-jobs")}>
+          Apply Now
+        </Button>
       </CardActions>
     </Card>
     </GuideBox>
@@ -106,6 +153,8 @@ JobCard.propTypes = {
     textthree: PropTypes.string.isRequired,
     textfour: PropTypes.string.isRequired,
   }).isRequired,
+  exclusive: PropTypes.bool,
+  tarvel: PropTypes.bool,
 };
 
 export default JobCard;

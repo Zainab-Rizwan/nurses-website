@@ -3,7 +3,7 @@ import React from "react";
 import { useTheme } from '@emotion/react';
 import Images from "constants/ImgConstants";
 import './index.scss';
-import Button from "shared/Button";
+import SharedButton from "shared/Button";
 
 
 const Calculator = () => {
@@ -73,7 +73,7 @@ const Calculator = () => {
             sx={{ my: 1, minWidth: "20rem"}}
         />
         <Box sx={{mt: 2}}>
-        <Button value ="Calculate"/>
+        <SharedButton value ="Calculate"/>
         </Box>
         </Box>
         </Box>

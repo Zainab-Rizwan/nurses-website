@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography, Chip } from '@mui/material';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography, Chip, Autocomplete, FormControl } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useTheme } from '@emotion/react';
@@ -21,16 +20,22 @@ function Copyright(props) {
     </Typography>
   );
 }
+
+const disciplines = ['Monitor Technician', 'Surgical First Assistant', 'Paramedic', 'Histology Technician'];
+const locations = ['Arizona', 'California', 'Indiana', 'Illinois'];
+
 export default function AccountSetUp() {
   const theme = useTheme();
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
-  const lightBlue = theme.palette.neutral.light;
   const white = theme.palette.background.default;
-
+  const darkBlue = theme.palette.primary.dark;
+  const lightgray = theme.palette.neutral.dark;
+  const mainBlue = theme.palette.primary.main;
   const h3bold = theme.typography.h3bold;
   const h5 = theme.typography.h5;
   const h6bold = theme.typography.h6bold;
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,14 +47,16 @@ export default function AccountSetUp() {
     });
   };
 
-  const [selectedValues1, setSelectedValues1] = useState([]);
-  const handleChange1 = (event) => {
-    const { value } = event.target;
-    setSelectedValues1(value);
+  const [selectedOptions1, setSelectedOptions1] = useState([]);
+  const [selectedOptions2, setSelectedOptions2] = useState([]);
+
+  const handleOptionSelect1 = (event, values) => {
+    setSelectedOptions1(values);
   };
 
-
-  const navigate = useNavigate();
+  const handleOptionSelect2 = (event, values) => {
+    setSelectedOptions2(values);
+  };
 
   return ( 
     <ThemeProvider theme={theme}>
@@ -125,7 +132,6 @@ export default function AccountSetUp() {
                 label="Job Type"
                 name="job-type"
                 sx= {{ minWidth: "49%"}}
-                autoFocus
               />
               <TextField
                 margin="normal"
@@ -137,15 +143,44 @@ export default function AccountSetUp() {
                 sx= {{ marginLeft: "2%", minWidth: "49%"}}
               />
             </div>
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="profession"
-                label="Profession"
-                name="profession"
-                autoFocus
+            <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray',  position: "relative",}}>
+              <Autocomplete
+                  ListboxProps={{
+                    style: { maxHeight: '200px' },
+                  }}
+                  multiple
+                  options={disciplines}
+                  value={selectedOptions1}
+                  onChange={handleOptionSelect1}
+                  limitTags={2}
+                  getLimitTagsText={(more) => `+${more}`}
+                  renderTags={(value, getTagProps) =>
+                    value.map((option, index) => (
+                <Chip
+                  key={option}
+                  label={option}
+                  sx={{ borderRadius:"2px",  }}
+                  onDelete={() => {
+                    const newSelectedOptions1 = [...selectedOptions1];
+                    newSelectedOptions1.splice(index, 1);
+                    setSelectedOptions1(newSelectedOptions1);
+                  }}
+                  {...getTagProps({ index })}
+                />
+              ))
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="outlined"
+                label="Professions"
+                InputLabelProps={{
+                  style: { color: lightgray, fontWeight: 300, fontSize:"14px", maxHeight: "20px" }
+                }}
               />
+            )}
+          />
+          </FormControl>    
              <TextField
                 margin="normal"
                 required
@@ -153,7 +188,6 @@ export default function AccountSetUp() {
                 id="specialty"
                 label="Specialty"
                 name="specialty"
-                autoFocus
               />     
              <TextField
                 margin="normal"
@@ -177,42 +211,64 @@ export default function AccountSetUp() {
                 id="specialty"
                 label="Licenses in States"
                 name="specialty"
-                autoFocus
               /> 
-            <FormControl sx={{ minWidth: "100%", mt: 2}}>
-            <InputLabel>Preferred Location</InputLabel>
-            <Select
-            multiple
-            value={selectedValues1}
-            onChange={handleChange1}
-            renderValue={(selected) => (
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} style={{ marginRight: 5, backgroundColor: lightBlue }} />
-                ))}
-              </div>
-            )}
-            autoWidth
-          >
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
-          </Select>
-          </FormControl>           
+             <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", }}>
+                <Autocomplete
+                ListboxProps={{
+                  style: { maxHeight: '200px' },
+                }}
+                multiple
+                options={locations}
+                value={selectedOptions2}
+                limitTags={3}
+                getLimitTagsText={(more) => `+${more}`}
+                onChange={handleOptionSelect2}
+                renderTags={(value, getTagProps) =>
+                  value.map((option, index) => (
+                    <Chip
+                    sx={{ borderRadius:"2px"  }}
+                      key={option}
+                      label={option}
+                      onDelete={() => {
+                        const newSelectedOptions2 = [...selectedOptions2];
+                        newSelectedOptions2.splice(index, 1);
+                        setSelectedOptions2(newSelectedOptions2);
+                      }}
+                      {...getTagProps({ index })}
+                    />
+                  ))
+                }
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    label="Preferred Location"
+                    InputLabelProps={{
+                      style: { color: lightgray, fontWeight: 300, fontSize:"14px" }
+                    }}
+                  />
+                )}
+              />
+                </FormControl>       
              <Button
               type="submit"
               fullWidth
               variant="contained"
               onClick={() => navigate("/otp")}
               sx={{
-                mt: 3, 
-                mb: 2, 
-                p: 2, 
-                border: `1px solid ${primaryMain}`,
-                fontSize: h6bold, 
-                '&:hover': {
-                  backgroundColor: white,
-                  color: primaryMain,
+                padding: "10px 30px",
+                border: "none",
+                mt: 2,
+                borderColor : darkBlue,
+                transition: "all 0.4s",
+                cursor: "pointer",
+                backgroundColor: mainBlue,
+                borderRadius: "4px",
+                color: white,
+                fontSize: h6bold,
+                wordSpacing: "2px",
+                "&:hover": {
+                  backgroundColor: "#103d49",
                 },
               }}
             >

@@ -5,7 +5,7 @@ import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
 import Images from 'constants/ImgConstants';
 import { IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff, Google } from '@mui/icons-material';
 
 
 function Copyright(props) {
@@ -25,10 +25,12 @@ export default function SignIn() {
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
   const white = theme.palette.background.default;
-
+  const lightGray = theme.palette.neutral.light;
   const h3bold = theme.typography.h3bold;
   const h5 = theme.typography.h5;
   const h6bold = theme.typography.h6bold;
+  const darkBlue = theme.palette.primary.dark;
+  const mainBlue = theme.palette.primary.main;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -101,22 +103,52 @@ export default function SignIn() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, 
-                    mb: 2, 
-                    p: 2, 
-                    border: `1px solid ${primaryMain}`,
-                    fontSize: h6bold, 
-                    '&:hover': {
-                        backgroundColor: white,
-                        color: primaryMain,
-                  }, }}
-              >
-                Sign In
-              </Button>
+                 <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{
+                padding: "10px 30px",
+                  border: "none",
+                  mt: 1,
+                  mb: 1, 
+                  borderColor : darkBlue,
+                  transition: "all 0.4s",
+                  cursor: "pointer",
+                  backgroundColor: mainBlue,
+                  borderRadius: "4px",
+                  color: white,
+                  fontSize: h6bold,
+                  wordSpacing: "2px",
+                  "&:hover": {
+                    backgroundColor: "#103d49",
+                  },
+              }}
+            >
+              Sign In
+            </Button>
+            <Button
+              type="submit"
+              fullWidth
+              sx={{
+                mb: 2, 
+                mt: 1,
+                p: "10px 30px",
+                wordSpacing: "2px",
+                border: `1px solid ${lightGray}`,
+                fontSize: h6bold, 
+                '&:hover': {
+                  backgroundColor: lightGray,
+                  color: darkGray,
+                },
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Google sx={{ mr: 1, color: darkGray }} />
+              Sign In with Google
+            </Button>
               <Grid container>
                 <Grid item xs>
                   <Link href="forgot-password" variant="body2">

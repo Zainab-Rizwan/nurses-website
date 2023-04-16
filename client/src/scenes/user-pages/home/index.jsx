@@ -9,6 +9,7 @@ import Map from './map';
 import Details from './details';
 import Applicants from './applicants';
 import Recruiters from './recruiters';
+import Guide from './guide';
 
 const Home = () => {
     return (
@@ -16,9 +17,10 @@ const Home = () => {
       <Navbar />
       <Hero />
       <About />
+      <Details />
       <Map />
       <Applicants/>
-      <Details />
+      <Guide />
       <Recruiters />
       <Footer/>
     </Box> 

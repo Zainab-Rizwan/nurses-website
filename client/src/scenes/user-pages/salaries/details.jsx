@@ -9,16 +9,14 @@ const Details = () => {
   const mainBlue = theme.palette.primary.main ;
   const darkBlue = theme.palette.primary.dark;
   const primaryMain = theme.palette.primary.main;
-  const h2 = theme.typography.h2; 
   const h3bold = theme.typography.h3bold;
   const h5bold = theme.typography.h5bold;
   const isDesktopScreens = useMediaQuery("(min-width: 800px)");
-  const isTabletScreens = useMediaQuery("(min-width: 650px)");
 
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
-    gap: theme.spacing(8),
+    gap: isDesktopScreens ? theme.spacing(8) : theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -41,7 +39,7 @@ const Details = () => {
         </Typography> 
           <Typography
           sx={{ 
-            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            fontSize: h3bold,
             color: primaryMain, 
           }}>
          $52/hour
@@ -59,7 +57,7 @@ const Details = () => {
         </Typography> 
           <Typography
           sx={{ 
-            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            fontSize: h3bold,
             color: primaryMain, 
           }}>
          $1265/hour
@@ -77,7 +75,7 @@ const Details = () => {
         </Typography> 
           <Typography
           sx={{ 
-            fontSize: isTabletScreens ? h3bold : isDesktopScreens ? h2 : h2,
+            fontSize: h3bold,
             color: primaryMain, 
           }}>
          $32.67/hour

@@ -25,8 +25,10 @@ export default function SignUp() {
   const theme = useTheme();
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
-  const lightGray = theme.palette.background.alt;
+  const lightGray = theme.palette.neutral.light;
   const white = theme.palette.background.default;
+  const darkBlue = theme.palette.primary.dark;
+  const mainBlue = theme.palette.primary.main;
 
   const h3bold = theme.typography.h3bold;
   const h5 = theme.typography.h5;
@@ -99,7 +101,6 @@ export default function SignUp() {
                 label="Email"
                 name="email"
                 autoComplete="email"
-                autoFocus
               />
              <TextField
               margin="normal"
@@ -151,15 +152,21 @@ export default function SignUp() {
               variant="contained"
               onClick={() => navigate("/account-setup")}
               sx={{
-                mt: 3, 
-                mb: 2, 
-                p: 2, 
-                border: `1px solid ${primaryMain}`,
-                fontSize: h6bold, 
-                '&:hover': {
-                  backgroundColor: white,
-                  color: primaryMain,
-                },
+                padding: "10px 30px",
+                  border: "none",
+                  mt: 1,
+                  mb: 1, 
+                  borderColor : darkBlue,
+                  transition: "all 0.4s",
+                  cursor: "pointer",
+                  backgroundColor: mainBlue,
+                  borderRadius: "4px",
+                  color: white,
+                  fontSize: h6bold,
+                  wordSpacing: "2px",
+                  "&:hover": {
+                    backgroundColor: "#103d49",
+                  },
               }}
             >
               Next
@@ -169,7 +176,9 @@ export default function SignUp() {
               fullWidth
               sx={{
                 mb: 2, 
-                p: 2, 
+                mt: 1,
+                p: "10px 30px",
+                wordSpacing: "2px",
                 border: `1px solid ${lightGray}`,
                 fontSize: h6bold, 
                 '&:hover': {

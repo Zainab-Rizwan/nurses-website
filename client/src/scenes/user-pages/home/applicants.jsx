@@ -1,7 +1,7 @@
 import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import Button from "shared/Button";
+import SharedButton from "shared/Button";
 import Images from "constants/ImgConstants";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
@@ -81,7 +81,7 @@ const Applicants = () => {
 
 
             </Typography>
-            <Button
+            <SharedButton
               value="Explore Featured Jobs"
               onClick={() => navigate("/browse-jobs")}
             />

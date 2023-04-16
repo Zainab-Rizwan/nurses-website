@@ -11,11 +11,11 @@ import './index.scss';
 
 
 const cards = [
-  { image: Images.CARD_IMG, title: 'New York City, NY', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights",  textthree: "48 Hrs/Week",   textfour: "13 Weeks",},
+  { image: Images.CARD_IMG, title: 'New York City, NY', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: false},
+  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: true},
+  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: true},
+  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: false},
+  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: true},
 ];
 
 
@@ -110,11 +110,11 @@ export default function TopJobs(props){
         }}>
           <GuidesBox>
           <Slider ref={slider}  {...sliderSettings} sx={{ mb: 6}}>
-              {cards.map((job, index) => (
-              <Grid item key={index}>
-                <JobCard job={job} />
-              </Grid>
-            ))}
+          {cards.map((job, index) => (
+            <Grid item key={index}>
+              <JobCard job={job} exclusive={job.exclusive} travel={job.travel} />
+            </Grid>
+          ))}
             </Slider>
           </GuidesBox>
         </Box>

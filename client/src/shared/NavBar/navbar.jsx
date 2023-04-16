@@ -3,11 +3,9 @@ import { useState } from "react";
 import {
   Box,
   IconButton,
-  InputBase,
   Typography,
-  Select,
   MenuItem,
-  FormControl,
+  Avatar,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
@@ -15,29 +13,22 @@ import {
   Menu,
   Close,
 } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
-import { setLogout } from "state";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import FlexBetween from "shared/FlexBetween/FlexBetween";
-import { Link } from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  //const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-
   const theme = useTheme();
-  const neutralLight = theme.palette.neutral.light;
+  const location = useLocation(); // <-- get the current location using useLocation
   const primary = theme.palette.neutral.main;
   const primaryMain = theme.palette.primary.main;
-  const neutralDark =  theme.palette.neutral.alt;
   const background = theme.palette.background.default;
   const alt = theme.palette.background.default;
-  const bold= theme.typography.h6bold;
-
-  const fullName = `John Doe`;
+  const bolder= theme.typography.h6bold;
 
   return (
     <FlexBetween padding="0.75rem 5%" backgroundColor={alt}>
@@ -61,34 +52,13 @@ const Navbar = () => {
 
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
-        <FlexBetween gap="1.25rem">               
-          <MenuItem component={Link} to="/browse-jobs"  style={{ color: primaryMain, ...bold }} >Browse Jobs</MenuItem>
-          <MenuItem component={Link} to="/salaries" style={{ color: primaryMain, ...bold }}>Salaries</MenuItem>
-          <FormControl variant="standard" value={fullName}>
-            <Select
-              value={fullName}
-              sx={{
-                backgroundColor: neutralLight,
-                width: "150px",
-                borderRadius: "0.25rem",
-                p: "0.25rem 1rem",
-                "& .MuiSvgIcon-root": {
-                  pr: "0.25rem",
-                  width: "3rem",
-                },
-                "& .MuiSelect-select:focus": {
-                  backgroundColor: neutralLight,
-                },
-              }}
-              input={<InputBase />}
-            >
-              <MenuItem style={{ color: neutralDark, ...bold }} value={fullName}>
-                <Typography>{fullName}</Typography>
-              </MenuItem>
-              <MenuItem style={{ color: neutralDark, ...bold }} onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
-            </Select>
-          </FormControl>
-        </FlexBetween>
+        <FlexBetween gap="1rem">               
+        <MenuItem component={NavLink} to="/browse-jobs" activeClassName="active-link" style={{ color: location.pathname === "/browse-jobs" ? primary : primaryMain, textDecoration: location.pathname === "/browse-jobs" , ...bolder }}> Browse Jobs </MenuItem>          
+          <MenuItem component={NavLink} to="/salaries" activeClassName="active-link" style={{ color: location.pathname === "/salaries" ? primary : primaryMain, textDecoration: location.pathname === "/salaries" ,...bolder }}> Salaries </MenuItem>          
+          <MenuItem component={NavLink} to="/sign-up" activeClassName="active-link" style={{ color: location.pathname === "/sign-up" ? primary : primaryMain, textDecoration: location.pathname === "/sign-up" ,...bolder }}> Sign Up </MenuItem>          
+          <MenuItem component={NavLink} to="/sign-in" activeClassName="active-link" style={{ color: location.pathname === "/sign-in" ? primary : primaryMain, textDecoration: location.pathname === "/sign-in" , ...bolder }}> Login </MenuItem>          
+          <MenuItem component={NavLink} to="/profile" activeClassName="active-link"  ><Avatar sx={{ bgcolor: primaryMain, width: 32, height: 32 }}> <AccountCircleIcon /></Avatar></MenuItem>
+          </FlexBetween>
       ) : (
         <IconButton
           onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
@@ -126,34 +96,11 @@ const Navbar = () => {
             alignItems="center"
             gap="2rem"
           >
-          <MenuItem component={Link} to="/browse-jobs"  style={{ color: primaryMain, ...bold }} >Browse Jobs</MenuItem>
-          <MenuItem component={Link} to="/salaries" style={{ color: primaryMain, ...bold }}>Salaries</MenuItem>
-            <FormControl variant="standard" value={fullName}>
-              <Select
-                value={fullName}
-                sx={{
-                  backgroundColor: neutralLight,
-                  width: "150px",
-                  borderRadius: "0.25rem",
-                  p: "0.25rem 1rem",
-                  "& .MuiSvgIcon-root": {
-                    pr: "0.25rem",
-                    width: "3rem",
-                  },
-                  "& .MuiSelect-select:focus": {
-                    backgroundColor: neutralLight,
-                  },
-                }}
-                input={<InputBase />}
-              >
-                <MenuItem style={{ color: primaryMain, ...bold }} value={fullName}>
-                  <Typography>{fullName}</Typography>
-                </MenuItem>
-                <MenuItem style={{ color: primaryMain, ...bold }} onClick={() => dispatch(setLogout())}>
-                  Log Out
-                </MenuItem>
-              </Select>
-            </FormControl>
+          <MenuItem component={NavLink} to="/browse-jobs" activeClassName="active-link" style={{ color: location.pathname === "/browse-jobs" ? primary : primaryMain, textDecoration: location.pathname === "/browse-jobs" , ...bolder }}> Browse Jobs </MenuItem>          
+          <MenuItem component={NavLink} to="/salaries" activeClassName="active-link" style={{ color: location.pathname === "/salaries" ? primary : primaryMain, textDecoration: location.pathname === "/salaries" ,...bolder }}> Salaries </MenuItem>          
+          <MenuItem component={NavLink} to="/sign-up" activeClassName="active-link" style={{ color: location.pathname === "/sign-up" ? primary : primaryMain, textDecoration: location.pathname === "/sign-up" ,...bolder }}> Sign Up</MenuItem>          
+          <MenuItem component={NavLink} to="/sign-in" activeClassName="active-link" style={{ color: location.pathname === "/sign-in" ? primary : primaryMain, textDecoration: location.pathname === "/sign-in" , ...bolder }}> Login </MenuItem>          
+          <MenuItem component={NavLink} to="/profile" activeClassName="active-link"  ><Avatar sx={{ bgcolor: primaryMain, width: 32, height: 32 }}> <AccountCircleIcon /></Avatar></MenuItem>
           </FlexBetween>
         </Box>
       )}

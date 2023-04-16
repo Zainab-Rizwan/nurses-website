@@ -1,7 +1,7 @@
 import { Box, styled, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import Button from "shared/Button";
+import SharedButton from "shared/Button";
 import Images from "constants/ImgConstants";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
@@ -26,7 +26,7 @@ const Recruiters = () => {
     justifyContent: "center",
     gap: theme.spacing(4),
     marginBottom: theme.spacing(8),
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(6),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -75,7 +75,7 @@ const Recruiters = () => {
                  <li style={{ marginBottom: "8px" }}>Effortlessly find top candidates</li>
                  <li style={{ marginBottom: "8px" }}>Manage applications with less effort and time</li>
             </Typography>
-            <Button
+            <SharedButton
               value="Post Jobs"
               onClick={() => navigate("/browse-jobs")}
             />
