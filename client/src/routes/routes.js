@@ -10,11 +10,14 @@ import Profile from 'scenes/user-pages/profile';
 import Salaries from 'scenes/user-pages/salaries'; 
 import SignUp from 'scenes/auth-pages/signup';
 import SignIn from 'scenes/auth-pages/signin';
-import ForgotPassword from 'scenes/auth-pages/forgot-password';
 import BrowseJobs from 'scenes/user-pages/browse-jobs';
 import AccoutSetUp from 'scenes/auth-pages/account-setup';
 import OTP from 'scenes/auth-pages/otp';
+import ForgotPassword from 'scenes/auth-pages/forgot-password';
 import ViewJobs from 'scenes/user-pages/view-jobs';
+import CheckEmail from 'scenes/auth-pages/check-email';
+import PasswordReset from 'scenes/auth-pages/password-reset';
+import SetNewPassword from 'scenes/auth-pages/set-new-password';
 
 export const MyRoutes = [
     { path: "/", element: <Home />},
@@ -33,4 +36,7 @@ export const MyRoutes = [
     { path: "/account-setup", element: <AccoutSetUp />},
     { path: "/otp", element: <OTP />},
     { path: "/view-jobs", element: <ViewJobs />},
+    { path: "/check-email", element: <CheckEmail />},
+    { path: "/password-reset", element: <PasswordReset />},
+    { path: "/set-new-password", element: <SetNewPassword />},
 ]

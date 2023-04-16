@@ -1,5 +1,5 @@
-import { Box, styled, Typography, useMediaQuery, Paper, } from "@mui/material";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Box, styled, Typography, Paper, Grid } from "@mui/material";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React from "react";
 import { useTheme } from '@emotion/react';
 import './index.scss';
@@ -41,8 +41,6 @@ const Graph = () => {
   const h5 = theme.typography.h5;
   const h7 = theme.typography.h7;
   const h3bold = theme.typography.h3bold;
-  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
-  const isTabletScreens = useMediaQuery("(min-width: 508px)");
 
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -59,7 +57,8 @@ const Graph = () => {
   return (
     <Box  component={Paper} elevation={9} sx={{  marginLeft: "10%", marginRight:"10%", marginTop: theme.spacing(4), p:3 }}>
     <CustomBox>
-        <Box  sx={{ flex: "1.25", p:3 }} >
+    <Grid container spacing={3}>
+        <Grid item xs={12} md={5}> 
         <Typography
           sx={{ 
             fontSize: h3bold,
@@ -81,26 +80,29 @@ const Graph = () => {
           sx={{ 
             fontSize: h1,
             color: primaryMain, 
+            mb: "4rem"
           }}>
          $32.67/hour
         </Typography>     
-        </Box>
+         </Grid>
 
-
-        <Box sx={{ flex: "1.75" }}>
-        <Typography sx={{fontSize: h5, marginLeft: isDesktopScreens ? "5rem"  : isTabletScreens ? "3rem" : "0rem"}}>Lorem Ipsum Dolor Graph</Typography>
-        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center", marginRight: isDesktopScreens ? "-5rem" : "1rem", marginLeft: isTabletScreens ? "-5rem" : "0rem"}}>
-          <BarChart width={isTabletScreens ? 400 : isDesktopScreens ? 350 : 350} height={isTabletScreens ? 350 : 300} data={data} >
-            <CartesianGrid strokeDasharray="2 2" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="value1" stackId="a" fill= {mainBlue} />
-            <Bar dataKey="value2" stackId="a" fill= {"#bad1d7"}/>
-          </BarChart>
+        <Grid item xs={12} md={7} >
+        <Typography sx={{fontSize: h5}}>Lorem Ipsum Dolor Graph</Typography>
+        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center"}}>
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="2 2" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="value1" stackId="a" fill= {mainBlue} />
+              <Bar dataKey="value2" stackId="a" fill= {"#bad1d7"} />
+            </BarChart>
+          </ResponsiveContainer>
         </Box>
-        </Box>
+      </Grid>   
+      </Grid>   
     </CustomBox>
     </Box>  
   );

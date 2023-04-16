@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
 import Images from 'constants/ImgConstants';
 import { IconButton, InputAdornment } from '@mui/material';
-import { Google, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
-
+import KeyIcon from '@mui/icons-material/Key';
 
 function Copyright(props) {
   return (
@@ -21,11 +20,10 @@ function Copyright(props) {
     </Typography>
   );
 }
-export default function SignUp() {
+export default function SetNewPassword() {
   const theme = useTheme();
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
-  const lightGray = theme.palette.neutral.light;
   const white = theme.palette.background.default;
   const darkBlue = theme.palette.primary.dark;
   const mainBlue = theme.palette.primary.main;
@@ -63,44 +61,15 @@ export default function SignUp() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: primaryMain}}>
-              <LockOutlinedIcon />
+              <KeyIcon />
             </Avatar>
             <Typography sx={{ fontSize: h3bold, mt: 2 }}>
-              Sign Up
+              Set new password
             </Typography>
             <Typography sx={{ fontSize: h5, my: 1, color: darkGray }}>
-              Join the community today!
+              Your new password must be different to previously used passwords
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <TextField
-                margin="normal"
-                required
-                id="fname"
-                label="First Name"
-                name="fname"
-                sx= {{ minWidth: "49%"}}
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                id="lname"
-                label="Last Name"
-                name="lname"
-                sx= {{ marginLeft: "2%", minWidth: "49%"}}
-
-              />
-            </div>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-              />
              <TextField
               margin="normal"
               required
@@ -149,12 +118,12 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={() => navigate("/account-setup")}
+              onClick={() => navigate("/password-reset")}
               sx={{
                 padding: "10px 30px",
                   border: "none",
                   mt: 1,
-                  mb: 1, 
+                  mb: 4, 
                   borderColor : darkBlue,
                   transition: "all 0.4s",
                   cursor: "pointer",
@@ -168,40 +137,8 @@ export default function SignUp() {
                   },
               }}
             >
-              Next
+              Reset Password
             </Button>
-            <Button
-              type="submit"
-              fullWidth
-              sx={{
-                mb: 2, 
-                mt: 1,
-                p: "10px 30px",
-                wordSpacing: "2px",
-                border: `1px solid ${lightGray}`,
-                fontSize: h6bold, 
-                '&:hover': {
-                  backgroundColor: lightGray,
-                  color: darkGray,
-                },
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Google sx={{ mr: 1, color: darkGray }} />
-              Sign Up with Google
-            </Button>
-              <Grid container>
-                <Grid item>
-                <Typography variant="body2">
-                 Already have an account? {' '}
-                  <Link component={Link} to href="sign-in" variant="body2">
-                    <strong>Sign In</strong>
-                  </Link>
-                </Typography>
-                </Grid>
-              </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>

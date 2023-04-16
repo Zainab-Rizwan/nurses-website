@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Button, CssBaseline, Link, Paper, Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
 import Images from 'constants/ImgConstants';
-import KeyIcon from '@mui/icons-material/Key';
-import { useNavigate } from "react-router-dom";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -18,9 +18,8 @@ function Copyright(props) {
     </Typography>
   );
 }
-export default function ForgotPassword() {
+export default function CheckEmail() {
   const theme = useTheme();
-  const navigate = useNavigate();
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
   const white = theme.palette.background.default;
@@ -29,16 +28,7 @@ export default function ForgotPassword() {
   const h6bold = theme.typography.h6bold;
   const darkBlue = theme.palette.primary.dark;
   const mainBlue = theme.palette.primary.main;
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+  const navigate = useNavigate();
 
   return ( 
     <ThemeProvider theme={theme}>
@@ -55,30 +45,20 @@ export default function ForgotPassword() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: primaryMain}}>
-              <KeyIcon />
+              <MailOutlineIcon />
             </Avatar>
             <Typography sx={{ fontSize: h3bold, mt: 2 }}>
-              Forgot Password?
+              Check Your Email
             </Typography>
             <Typography sx={{ fontSize: h5, my: 1, color: darkGray }}>
-              No worries, we'll send your reset instructions.
+             We sent a password reset link to sampleemail@gmail.com
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
+            <Box component="form" noValidate sx={{ mt: 1 }}>
                  <Button
               type="submit"
+              onClick={() => navigate("/set-new-password")}
               fullWidth
               variant="contained"
-              onClick={() => navigate("/check-email")}
               sx={{
                 padding: "10px 30px",
                   border: "none",
@@ -97,13 +77,16 @@ export default function ForgotPassword() {
                   },
               }}
             >
-              Reset Password
+              Open email app
             </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="sign-in" variant="body2">
-                    Back to login
+                <Typography variant="body2">
+                Didn't receive the email? {' '}
+                  <Link component={Link} to href="sign-in" variant="body2">
+                    <strong>Click to resend.</strong>
                   </Link>
+                </Typography>
                 </Grid>
                 <Grid item>
                 </Grid>

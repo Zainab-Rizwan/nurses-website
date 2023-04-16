@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Button, CssBaseline, Link, Paper, Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
 import Images from 'constants/ImgConstants';
-import KeyIcon from '@mui/icons-material/Key';
-import { useNavigate } from "react-router-dom";
+import DoneIcon from '@mui/icons-material/Done';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -18,7 +18,7 @@ function Copyright(props) {
     </Typography>
   );
 }
-export default function ForgotPassword() {
+export default function PasswordReset() {
   const theme = useTheme();
   const navigate = useNavigate();
   const primaryMain = theme.palette.primary.main;
@@ -29,16 +29,6 @@ export default function ForgotPassword() {
   const h6bold = theme.typography.h6bold;
   const darkBlue = theme.palette.primary.dark;
   const mainBlue = theme.palette.primary.main;
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
 
   return ( 
     <ThemeProvider theme={theme}>
@@ -55,30 +45,20 @@ export default function ForgotPassword() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: primaryMain}}>
-              <KeyIcon />
+              <DoneIcon />
             </Avatar>
             <Typography sx={{ fontSize: h3bold, mt: 2 }}>
-              Forgot Password?
+                Password reset
             </Typography>
             <Typography sx={{ fontSize: h5, my: 1, color: darkGray }}>
-              No worries, we'll send your reset instructions.
+              Your password has been successfully reset. Click below to login manually
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
+            <Box component="form" noValidate sx={{ mt: 1 }}>
                  <Button
               type="submit"
               fullWidth
               variant="contained"
-              onClick={() => navigate("/check-email")}
+              onClick={() => navigate("/sign-in")}
               sx={{
                 padding: "10px 30px",
                   border: "none",
@@ -97,17 +77,8 @@ export default function ForgotPassword() {
                   },
               }}
             >
-              Reset Password
+              Continue
             </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="sign-in" variant="body2">
-                    Back to login
-                  </Link>
-                </Grid>
-                <Grid item>
-                </Grid>
-              </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
