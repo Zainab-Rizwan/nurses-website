@@ -7,6 +7,7 @@ let Images = {
     HEADER_IMG: require("../assets/images/header-2.jpg"),
     CARD_IMG: require("../assets/images/card-img.jpg"),
     SALARIES_IMG: require("../assets/images/image-3.jpg"),
+    AVATAR_IMG: require("../assets/images/Avatar.jpg"),
 };
   
 export default Images;

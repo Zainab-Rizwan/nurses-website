@@ -162,7 +162,7 @@ const Details = () => {
         </FormControl>
   
           <Typography sx={{ mt: 2, fontSize: h5, my: 2 }}>Shift Breakdown</Typography>
-          <FormControl variant="outlined" sx={{borderColor: 'darkGray', minWidth:"18rem",  position: "relative",}}>
+          <FormControl variant="outlined" sx={{borderColor: 'darkGray', minWidth:"18rem",  position: "relative", mb:6}}>
             <Autocomplete
                 ListboxProps={{
                   style: { maxHeight: '200px' },

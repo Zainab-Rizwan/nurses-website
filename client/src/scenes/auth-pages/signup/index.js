@@ -72,26 +72,6 @@ export default function SignUp() {
               Join the community today!
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <TextField
-                margin="normal"
-                required
-                id="fname"
-                label="First Name"
-                name="fname"
-                sx= {{ minWidth: "49%"}}
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                id="lname"
-                label="Last Name"
-                name="lname"
-                sx= {{ marginLeft: "2%", minWidth: "49%"}}
-
-              />
-            </div>
               <TextField
                 margin="normal"
                 required

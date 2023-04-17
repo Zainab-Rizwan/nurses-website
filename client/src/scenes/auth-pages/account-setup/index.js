@@ -121,7 +121,6 @@ export default function AccountSetUp() {
               name="phone"
               autoComplete="tel"
               type="tel"
-              autoFocus
             />
               <div style={{ display: 'flex', alignItems: 'center' }}>
               <TextField
@@ -143,7 +142,7 @@ export default function AccountSetUp() {
                 sx= {{ marginLeft: "2%", minWidth: "49%"}}
               />
             </div>
-            <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray',  position: "relative",}}>
+            <FormControl fullWidth variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", mt: 1}}>
               <Autocomplete
                   ListboxProps={{
                     style: { maxHeight: '200px' },
@@ -203,6 +202,7 @@ export default function AccountSetUp() {
                 InputProps={{
                   defaultValue: null,
                 }}
+                sx={{ mt:1 , mb: 0}}
               />
              <TextField
                 margin="normal"
@@ -212,7 +212,7 @@ export default function AccountSetUp() {
                 label="Licenses in States"
                 name="specialty"
               /> 
-             <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", }}>
+             <FormControl fullWidth  variant="outlined" sx={{borderColor: 'darkGray',  position: "relative", mt: 1 }}>
                 <Autocomplete
                 ListboxProps={{
                   style: { maxHeight: '200px' },

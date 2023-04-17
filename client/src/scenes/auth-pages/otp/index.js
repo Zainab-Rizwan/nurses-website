@@ -6,6 +6,7 @@ import { ThemeProvider } from '@emotion/react';
 import Images from 'constants/ImgConstants';
 import { useState } from 'react';
 import OtpInput from 'react-otp-input';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -45,6 +46,7 @@ const styles = {
 
 export default function OTP() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const primaryMain = theme.palette.primary.main;
   const darkGray = theme.palette.primary.dark;
   const white = theme.palette.background.default;
@@ -101,6 +103,7 @@ export default function OTP() {
               </Box>
                 <Button
                 type="submit"
+                onClick={() => navigate("/")}
                 fullWidth
                 variant="contained"
                 sx={{padding: "10px 30px",

@@ -1,53 +1,87 @@
 import * as React from 'react';
-import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography} from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
+import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import InboxIcon  from '@mui/icons-material/Inbox';
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import ContactPageRoundedIcon from '@mui/icons-material/ContactPageRounded';
+import BusinessCenterRoundedIcon from '@mui/icons-material/BusinessCenterRounded';
+import ApartmentRoundedIcon from '@mui/icons-material/ApartmentRounded';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useTheme } from '@emotion/react';
+import { useNavigate  } from 'react-router-dom';
+import Images from 'constants/ImgConstants';
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 interface Props {
   window?: () => Window;
 }
 
 export default function ResponsiveDrawer(props: Props) {
+  const location = useLocation();
+  const [activeItem, setActiveItem] = React.useState(location.pathname);
   const { window } = props;
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const white = theme.palette.background.default;
+  const lightBlue = theme.palette.neutral.main;
+  const lightGray = theme.palette.background.alt;
+  const darkBlue = theme.palette.primary.dark;
+  const lighterBlue = theme.palette.neutral.light;
+  const mainBlue = theme.palette.primary.main;
+  const h2= theme.typography.h3bold;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleListItemClick = (text: string, path: string) => {
+    setActiveItem(path);
+  };
+
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar sx={{ justifyContent: 'center'}}>
+      <Typography onClick={() => navigate("/")} sx={{ fontSize: h2, color: mainBlue, textAlign: 'center', cursor: 'pointer',
+        '&:hover': {
+        color: lightBlue,
+      },}}>Website Name</Typography>
+      </Toolbar>
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+      {[
+        { text: 'Dashboard', path: '/dashboard', icon: <DashboardOutlinedIcon /> },
+        { text: 'Jobs', path: '/jobs', icon: <BusinessCenterRoundedIcon /> },
+        { text: 'Disciplines', path: '/disciplines', icon: <ListAltIcon /> },
+        { text: 'Applicants', path: '/applicants', icon: <ContactPageRoundedIcon /> },
+        { text: 'Facilities', path: '/facilities', icon: <ApartmentRoundedIcon /> },
+        { text: 'Account', path: '/account', icon: <AccountCircleRoundedIcon /> },
+      ].map(({ text, path, icon }) => (
+        <ListItem key={text} disablePadding sx={{ padding: '5px 20px 0px 20px'}}>
+          <NavLink to={path} style={{ textDecoration: 'none' }}>
+            <ListItemButton
+              sx={{
+                backgroundColor: activeItem === path ? lighterBlue : white,
+                color: activeItem === path ? mainBlue : lightBlue,
+                borderRadius: '5px',
+                width: '11rem',
+                '&:hover': {
+                  backgroundColor: lightGray,
+                  color: mainBlue,
+                },
+              }}
+              onClick={() => handleListItemClick(text, path)}
+            >
+              <ListItemIcon sx={{  color: activeItem === path ? mainBlue : lightBlue}}> {icon}</ListItemIcon>
+              <ListItemText disableTypography primary={<Typography style={{ color: activeItem === path ? mainBlue : lightBlue, fontWeight: 500, fontSize: "14.4px"}}>{text}</Typography>}/>
             </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+          </NavLink>
+        </ListItem>
+      ))}
+    </List>
     </div>
   );
 
@@ -57,25 +91,24 @@ export default function ResponsiveDrawer(props: Props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="absolute"
+        elevation={0}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: lightGray,
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none', color: darkBlue } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
-          </Typography>
+          <Avatar  onClick={() => navigate("/account")}  src={Images.AVATAR_IMG} sx={{ ml: 2, cursor: "pointer", '&:hover': {boxShadow: theme.shadows[5], },}} />
         </Toolbar>
       </AppBar>
       <Box
@@ -109,39 +142,6 @@ export default function ResponsiveDrawer(props: Props) {
         >
           {drawer}
         </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
       </Box>
     </Box>
   );

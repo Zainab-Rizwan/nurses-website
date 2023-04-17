@@ -18,6 +18,7 @@ import ViewJobs from 'scenes/user-pages/view-jobs';
 import CheckEmail from 'scenes/auth-pages/check-email';
 import PasswordReset from 'scenes/auth-pages/password-reset';
 import SetNewPassword from 'scenes/auth-pages/set-new-password';
+import ResponsiveDrawer from 'shared/SideBar/sidebar';
 
 export const MyRoutes = [
     { path: "/", element: <Home />},
@@ -39,4 +40,6 @@ export const MyRoutes = [
     { path: "/check-email", element: <CheckEmail />},
     { path: "/password-reset", element: <PasswordReset />},
     { path: "/set-new-password", element: <SetNewPassword />},
+    { path: "/sidebar", element: <ResponsiveDrawer />},
+
 ]

@@ -1,15 +1,25 @@
 import * as React from 'react';
 import { Box} from "@mui/system";
-import Navbar from "shared/NavBar/navbar";
-import Footer from 'shared/Footer/footer';
+import ResponsiveDrawer from 'shared/SideBar/sidebar';
+import { Typography } from '@mui/material';
+import { useTheme } from '@emotion/react';
+
 
 const Facilities = () => {
+    const theme= useTheme();
     return (
-    <Box>
-        <Navbar />
-        <div>Facilities</div>    
-        <Footer />
-    </Box> 
+        <Box sx={{ display: 'flex' }}>
+        <ResponsiveDrawer />
+        <Box sx={{ flexGrow: 1, p: 3, mt: theme.spacing(8) }}>
+          <Typography variant="h3" sx={{ mb: 2 }}>
+            Welcome to my Facilities!
+          </Typography>
+          <Typography variant="body1">
+            Lorem ipquam erjusto rutrum sapienenim.
+          </Typography>
+         
+        </Box>
+      </Box>
     );
 };
 
