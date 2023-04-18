@@ -91,26 +91,30 @@ export default function ResponsiveDrawer(props: Props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="absolute"
-        elevation={0}
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: lightGray,
-        }}
-      >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <IconButton
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none', color: darkBlue } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Avatar  onClick={() => navigate("/account")}  src={Images.AVATAR_IMG} sx={{ ml: 2, cursor: "pointer", '&:hover': {boxShadow: theme.shadows[5], },}} />
-        </Toolbar>
-      </AppBar>
+  position="absolute"
+  elevation={0}
+  sx={{
+    width: { sm: `calc(100% - ${drawerWidth}px)` },
+    ml: { sm: `${drawerWidth}px` },
+    backgroundColor: lightGray,
+  }}
+>  
+  <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Box sx={{display: "inline"}}>
+    <div sx={{ display: 'inline', alignItems: 'center' }}>
+      <IconButton aria-label="open drawer" edge="start" onClick={handleDrawerToggle}
+        sx={{ mr: 2, display: { sm: 'none', color: darkBlue } }}>
+        <MenuIcon />
+      </IconButton>
+        <Typography sx={{ color: darkBlue, fontSize: h2}}></Typography>
+    </div>
+    </Box>
+    <Toolbar sx={{ paddingRight: 0, marginRight: -2 }}>
+      <Avatar onClick={() => navigate("/account")} src={Images.AVATAR_IMG} sx={{ ml: 2, cursor: "pointer", '&:hover': {boxShadow: theme.shadows[5], },}} />
+    </Toolbar>
+  </Toolbar>
+</AppBar>
+
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
