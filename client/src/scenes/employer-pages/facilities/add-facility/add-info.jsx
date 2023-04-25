@@ -103,13 +103,14 @@ export default function AddFacilityInfo(props){
               Provide a description for this facility
             </Typography>
           </Grid>
-          <Grid item xs={12} md={7}>
-          <ReactQuill
-              modules={modules}
-          /> 
+          <Grid item xs={12} md={7} sx={{ height: '215px', mb: isFullWidth ? 0 : "2rem"}}>
+            <ReactQuill 
+              modules={modules} 
+              style={{ minHeight: '150px', height: '150px'}}
+            />
           </Grid>
 
-          <Divider sx={{width: '100%', mt: 3, mb: 2}} />
+          <Divider sx={{width: '100%', mb: 2, mt: 2.5}} />
 
           <Grid item xs={12} md={5}>
             <Typography sx={{ fontSize: "16px", color: darkBlue, fontWeight: 700 }}>

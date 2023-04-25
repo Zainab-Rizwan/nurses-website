@@ -6,15 +6,13 @@ import FacilityCard from "shared/Facility-Cards";
 import { useState } from 'react';
 
 const cards = [
-  { image: Images.CARD_IMG, title: 'New York City, NY', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: false},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: true},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: false},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: true},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: false},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: false},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: true},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: false, travel: false},
-  { image: Images.CARD_IMG, title: 'Chicago, IL', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: true},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 24", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 13", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 91", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 04", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 38", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 61", beds: " 200",},
+  { image: Images.HOSPITAL_IMG, title: 'HillCrest Medical Center', location: "1120 S Utica Ave | Tulsa, OK 74104 ", about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.", jobs: " 11", beds: " 200",},
 ];
 
 export default function FacilityCards(props){
@@ -29,7 +27,7 @@ export default function FacilityCards(props){
   const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
 
   const [currentPage, setCurrentPage] = useState(0);
-  const cardsPerPage = 6;
+  const cardsPerPage = 5;
   const totalPages = Math.ceil(cards.length / cardsPerPage);
 
   const handleChange = (event, value) => {
@@ -68,9 +66,9 @@ export default function FacilityCards(props){
         }}>
         <GuidesBox>
           <Grid container spacing={0.1}>
-          {displayedCards.map((job, index) => (
-            <Grid item xs={12} sm={12} md={12} key={index}>
-              <FacilityCard job={job} exclusive={job.exclusive} travel={job.travel} />
+          {displayedCards.map((facilities, index) => (
+            <Grid item xs={12} key={index}>
+              <FacilityCard facilities={facilities}/>
             </Grid>
           ))}
           </Grid>

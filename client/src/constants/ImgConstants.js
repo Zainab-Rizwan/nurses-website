@@ -8,6 +8,8 @@ let Images = {
     CARD_IMG: require("../assets/images/card-img.jpg"),
     SALARIES_IMG: require("../assets/images/image-3.jpg"),
     AVATAR_IMG: require("../assets/images/Avatar.jpg"),
+    HOSPITAL_LOGO: require("../assets/images/hospital-logo.png"),
+    HOSPITAL_IMG: require("../assets/images/hospital-image.jpg"),
 };
   
 export default Images;

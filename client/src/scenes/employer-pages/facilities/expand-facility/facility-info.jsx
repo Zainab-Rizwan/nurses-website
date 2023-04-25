@@ -6,12 +6,12 @@ import { useState } from 'react';
 import FacilityInfoCard from "shared/FacilityInfo";
 
 const facility = {
-    image: Images.CARD_IMG,
+    image: Images.HOSPITAL_IMG,
     title: 'Hillcrest Medical Center',
-    textone: '1120 S Utica Ave | Tulsa, OK 74104 | 36.7783 N, 49.1174 W',
-    texttwo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.',
-    textthree: '200',
-    textfour: 'Start Date',
+    location: '1120 S Utica Ave | Tulsa, OK 74104 | 36.7783 N, 49.1174 W',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus maximus ac tortor vel dapibus. Pellentesque congue pharetra ligula commodo venenatis. Pellentesque blandit enim est, in dignissim mi blandit id. Pellentesque eu magna non tortor pharetra pharetra. Sed in justo sit amet neque posuere hendrerit eu et risus. Nam rhoncus suscipit nisi, ac porta urna vulputate id. Etiam nec odio eget ligula vehicula viverra.',
+    beds: '200',
+    coordinates: '36.7783,49.117'
   };
 
 export default function FacilityInfo(props){

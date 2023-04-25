@@ -40,7 +40,7 @@ function Map() {
   return (
     <CustomBox sx={{marginTop: isDesktopScreens ? "2rem": isTabletScreens ? "1.5rem" : "2rem" }}>
     <div className="map-container">
-      <MapContainer center={[37.0902, -95.7129]} zoom={6} scrollWheelZoom={true} maxBounds={bounds} maxBoundsViscosity={1.0} keyboard={false}>
+      <MapContainer center={[37.0902, -95.7129]} zoom={6} maxBounds={bounds} maxBoundsViscosity={1.0} keyboard={false}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {facilities.map((facility, index) => (
           <Marker key={index} position={facility.location}>
