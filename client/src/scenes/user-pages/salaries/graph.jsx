@@ -88,7 +88,7 @@ const Graph = () => {
 
         <Grid item xs={12} md={7} >
         <Typography sx={{fontSize: h5}}>Lorem Ipsum Dolor Graph</Typography>
-        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center", ml:-3}}>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="2 2" />

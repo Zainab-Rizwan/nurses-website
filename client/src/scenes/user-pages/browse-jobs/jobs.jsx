@@ -58,26 +58,25 @@ export default function Carousel(props){
         breakpoint: 2000,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToScroll: 3,
         }
       },
     {
-      breakpoint: 1150,
+      breakpoint: 1250,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 2,
       }
     },
     {
       breakpoint: 850,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
       }
     }
-  ]
-  };
-
+  ],
+};
 
   return (
     <Box sx={{ marginBottom: theme.spacing(8), marginTop: theme.spacing(6)}}>

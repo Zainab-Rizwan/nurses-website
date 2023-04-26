@@ -39,7 +39,7 @@ export default function ResponsiveDrawer(props: Props) {
   };
 
   const handleListItemClick = (text: string, path: string) => {
-    setActiveItem(path);
+      setActiveItem(path);
   };
 
   const drawer = (
@@ -109,7 +109,7 @@ export default function ResponsiveDrawer(props: Props) {
         <Typography sx={{ color: darkBlue, fontSize: h2}}></Typography>
     </div>
     </Box>
-    <Toolbar sx={{ paddingRight: 0, marginRight: -2 }}>
+    <Toolbar sx={{ paddingRight: 0, marginRight: 0}}>
       <Avatar onClick={() => navigate("/account")} src={Images.AVATAR_IMG} sx={{ ml: 2, cursor: "pointer", '&:hover': {boxShadow: theme.shadows[5], },}} />
     </Toolbar>
   </Toolbar>
@@ -120,7 +120,7 @@ export default function ResponsiveDrawer(props: Props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        {/* */}
         <Drawer
           container={container}
           variant="temporary"

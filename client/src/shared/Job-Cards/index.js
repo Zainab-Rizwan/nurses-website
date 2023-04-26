@@ -27,11 +27,7 @@ const JobCard = ({ job, exclusive, travel }) => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: theme.spacing(4, 0, 4, 0),
-    flex: 1,
-    [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(2, 0, 2, 0),
-    },
+    marginTop: theme.spacing(4)
   }));
 
   return (

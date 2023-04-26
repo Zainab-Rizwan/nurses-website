@@ -2,14 +2,14 @@
 @import "assets/scss/variables.scss";
 
 .slick-dots {
-    bottom: -20px; /* adjust the bottom spacing as needed */
+    bottom: -3rem !important;
   }
   
-  .slick-dots li button:before {
-    font-size: $font-12;
-    color: $cyan-blue; 
-  }
+.slick-dots li button:before {
+  font-size: $font-12;
+  color: $cyan-blue; 
+}
 
-  .slick-dots li.slick-active button:before {
-    color: $cyan-blue;
-  }
+.slick-dots li.slick-active button:before {
+  color: $cyan-blue;
+}

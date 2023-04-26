@@ -83,7 +83,7 @@ export default function PasswordReset() {
             </Box>
           </Box>
         </Grid>
-        <Grid
+        < Grid
           item
           xs={false}
           sm={4}

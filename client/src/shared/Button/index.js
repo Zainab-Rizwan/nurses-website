@@ -19,6 +19,7 @@ const SharedButton = ({value, onClick}) => {
         sx={{
           padding:" 10px 30px",
           border: "none",
+          maxWidth: "240px",
           backgroundColor: mainBlue,
           borderColor: darkBlue,
           color: white,

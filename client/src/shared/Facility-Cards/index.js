@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardActionArea, CardMedia, CardContent, Typography, Grid, IconButton, CardActions, styled, Box, Button, Divider } from "@mui/material";
+import { Card, CardMedia, CardContent, Typography, Grid, IconButton, styled, Box, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import LocalHotelRoundedIcon from '@mui/icons-material/LocalHotelRounded';
@@ -13,19 +13,14 @@ const FacilityCard = ({ facilities }) => {
  const navigate = useNavigate();
  const theme = useTheme();
  const mainBlue = theme.palette.primary.main ;
- const white = theme.palette.background.default ;
  const darkGray = theme.palette.neutral.dark;
  const lightGray = theme.palette.neutral.light;
  const lighterBlue = theme.palette.neutral.light;
  const darkBlue = theme.palette.primary.dark;
- const lightBlue = theme.palette.neutral.main;
- const h3 = theme.typography.h3;
  const h4bold = theme.typography.h4bold;
  const h6bold = theme.typography.h6bold;
  const h5bold = theme.typography.h5bold;
  const h5 = theme.typography.h5;
- const h7bold = theme.typography.h7bold;
- const h6bolder = theme.typography.h6bolder;
  const { image, title, location, about, jobs, beds } = facilities;
 
  const truncatedAbout = about.split(' ').slice(0, 25).join(' ');
@@ -43,7 +38,7 @@ const FacilityCard = ({ facilities }) => {
           <CardMedia
             component="img"
             height="100%"
-            image={facilities.image}
+            image={image}
           />
         </Grid>
         
@@ -61,9 +56,9 @@ const FacilityCard = ({ facilities }) => {
                     my: 1,
                   }}
                 >
-                  {facilities.title}
+                  {title}
                 </Typography>
-                <Typography sx={{ fontSize: h5bold, color: darkGray }}>{facilities.location}</Typography>
+                <Typography sx={{ fontSize: h5bold, color: darkGray }}>{location}</Typography>
               </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'right' }}>
@@ -97,7 +92,7 @@ const FacilityCard = ({ facilities }) => {
                     </IconButton>
                   </Grid>
                   <Grid item>
-                    <Typography sx={{ fontSize: h6bold, fontWeight:700, color: mainBlue, ml: 0.5 }}>{facilities.jobs} jobs</Typography>
+                    <Typography sx={{ fontSize: h6bold, fontWeight:700, color: mainBlue, ml: 0.5 }}>{jobs} jobs</Typography>
                   </Grid>
                 </Grid>
               </Box>
@@ -110,7 +105,7 @@ const FacilityCard = ({ facilities }) => {
                     </IconButton>
                   </Grid>
                   <Grid item>
-                    <Typography sx={{ fontSize: h6bold, fontWeight:700, color: mainBlue, ml: 0.5 }}>{facilities.beds} beds</Typography>
+                    <Typography sx={{ fontSize: h6bold, fontWeight:700, color: mainBlue, ml: 0.5 }}>{beds} beds</Typography>
                   </Grid>
                 </Grid>
               </Box>

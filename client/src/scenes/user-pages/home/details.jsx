@@ -205,7 +205,7 @@ const Details = () => {
 
         <Grid item xs={12} md={8}>
         <Typography sx={{fontSize: h5, ml:6}}>Lorem Ipsum Dolor Graph</Typography>
-        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center", mr: "1%", ml: "1%"}}>
+        <Box sx={{ flexGrow: 1, p: 2, fontSize: h7, display: "flex", justifyContent: "center", alignItems: "center", mr: "1%", ml: -1}}>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="2 2" />

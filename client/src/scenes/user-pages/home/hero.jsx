@@ -1,73 +1,74 @@
-import { Box, styled, Typography, useMediaQuery } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Typography, useMediaQuery, Grid, CssBaseline } from "@mui/material";
 import React from "react";
 import SharedButton from "shared/Button";
 import Images from "constants/ImgConstants";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 
-
 const Hero = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const primaryDark = theme.palette.primary.dark;
   const h1 = theme.typography.h1;
-  const h3bold = theme.typography.h3bold;
   const h4bold = theme.typography.h4bold;
-  const h6bold = theme.typography.h6bold;
-  const isTabletScreens = useMediaQuery("(min-width: 720px)");
-  const isDesktopScreens = useMediaQuery("(min-width: 1050px)");
-
-  const CustomBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "left",
-    gap: theme.spacing(5),
-    marginTop: isDesktopScreens ? theme.spacing(12) : isTabletScreens ? theme.spacing(12) :theme.spacing(3),
-    marginBottom:isDesktopScreens ? theme.spacing(14) : isTabletScreens ? theme.spacing(14) :theme.spacing(5),
-  }));
-
-  const HeroContainer = styled(Box)(({ theme }) => ({
-    background:  `url(${Images.HERO_IMG}) no-repeat`,
-    backgroundSize: "cover",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }));
+  const isTabletScreens = useMediaQuery("(min-width: 590px)");
+  const isDesktopScreens = useMediaQuery("(min-width: 900px)");
+  const primaryLight = theme.palette.primary.light;
+  const white = theme.palette.background.default;
 
   return (
-    <HeroContainer>
-      <Container>
-        <CustomBox>
-          <Box sx={{ flex: isDesktopScreens ? "0.5" : isTabletScreens ? "0.6" : "0.6"}}>
-          
-            <Typography sx={{ 
-                fontSize: isDesktopScreens ? h1 : isTabletScreens ? h1 : h3bold,
-                textAlign: "left",
-                color: primaryDark, 
-                my: isDesktopScreens ? 2 : 1 }}>
-                Elevate Your Nursing Career Today               
-            </Typography>
-
-            <Typography sx={{ 
-                fontSize: isDesktopScreens ? h4bold : isTabletScreens ? h4bold : h6bold,
-                textAlign: "left",
-                 color: "#5A6473", 
-                 my: isDesktopScreens ? 4 : 2 }}
+    <Box>
+      <Grid container>
+         <CssBaseline />
+          <Grid item xs={12} sm={ isTabletScreens ? 12 : 8} md={4} square sx={{  backgroundColor: isDesktopScreens ? white : primaryLight }}> 
+            <Box 
+              sx={{
+                my: 8,
+                mx: 6,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'left',
+              }}
             >
-              We provide a comprehensive platform for nurses to find the most relevant
-               and rewarding job opportunities in the industry
-            </Typography>
+              <Typography sx={{ 
+                    fontSize: h1,
+                    color: primaryDark, 
+                    my: isDesktopScreens ? 2 : 1,
+                    textAlign: isDesktopScreens ? "left" : isTabletScreens ? "center" : "center", }}>
+                    Elevate Your Nursing Career Today               
+                </Typography>
 
-            <SharedButton
-            value="Create Your Profile"
-            onClick={() => navigate("/profile")}       
+                <Typography sx={{ 
+                    fontSize: h4bold,
+                    textAlign: isDesktopScreens ? "left" : isTabletScreens ? "center" : "center",
+                    color: "#5A6473", 
+                    my: isDesktopScreens ? 4 : 2 }}
+                >
+                  We provide a comprehensive platform for nurses to find the most relevant
+                  and rewarding job opportunities in the industry
+                </Typography>
+              </Box>
+              <Box sx={{ display:'flex', justifyContent:  isDesktopScreens ? 'left' : "center", my: 8,  mx: 6, mt: isDesktopScreens ? -8 : -6}}>
+                  <SharedButton value="Create Your Profile" onClick={() => navigate("/profile")}  />
+              </Box> 
+          </Grid>
+          <Grid
+              item
+              xs={false}
+              sm={ isTabletScreens ? false : 4}
+              md={8}
+              textAlign="left"
+              sx={{
+                backgroundImage: `url(${Images.HERO_IMG})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: (t) =>
+                  t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
             />
-
-            <br></br>
-          </Box>
-        </CustomBox>
-      </Container>
-    </HeroContainer>
+       </Grid>
+    </Box>
   );
 };
 

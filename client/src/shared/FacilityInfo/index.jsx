@@ -1,16 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, CardActionArea, CardMedia, CardContent, Typography, Grid, IconButton, CardActions, styled, Box, Button, useMediaQuery } from "@mui/material";
-import FlightIcon from '@mui/icons-material/Flight';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { Card, CardMedia, CardContent, Typography, Grid, IconButton, styled, Box, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import OpenInFullRoundedIcon from '@mui/icons-material/OpenInFullRounded';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import SharedButton from "shared/Button";
 import LocalHotelRoundedIcon from '@mui/icons-material/LocalHotelRounded';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'; // import leaflet CSS
@@ -43,13 +38,11 @@ const FacilityInfoCard = ({ facility }) => {
  const darkGray = theme.palette.neutral.dark;
  const darkBlue = theme.palette.primary.dark;
  const lightGray = theme.palette.background.alt;
- const h3 = theme.typography.h3;
  const h4bold = theme.typography.h4bold;
  const h5bold = theme.typography.h5bold;
  const h6bold = theme.typography.h6bold;
  const h7bold = theme.typography.h7bold;
- const h6bolder = theme.typography.h6bolder;
- const { image, title, location, about, beds, coordinates } = facility;
+ const { image, title, location, about, beds } = facility;
  const isDesktopScreens = useMediaQuery("(min-width: 900px)");
 
 
@@ -193,7 +186,6 @@ FacilityInfoCard.propTypes = {
     location: PropTypes.string.isRequired,
     about: PropTypes.string.isRequired,
     beds: PropTypes.string.isRequired,
-    coordinates: PropTypes.string.isRequired,
   }).isRequired,
 };
 

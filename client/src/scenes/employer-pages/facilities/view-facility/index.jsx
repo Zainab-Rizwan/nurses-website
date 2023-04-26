@@ -4,7 +4,7 @@ import ResponsiveDrawer from 'shared/SideBar/sidebar';
 import { Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import Search from './search';
-import FacilityCards from './facilities';
+import FacilityCards from './cards';
 
 
 const Facilities = () => {
@@ -17,19 +17,17 @@ const Facilities = () => {
 
     return (
         <Box sx={{ display: 'flex', backgroundColor: lightGray }}>
-        <ResponsiveDrawer />
-        <Box sx={{ flexGrow: 1, p: 3, mt: theme.spacing(4) }}>
-          <Typography sx={{ mb: 1, fontSize: h2, color: darkBlue}}>
-            Facilities
-          </Typography>
-          <Typography sx={{ fontSize: h6bold, color: darkGray}}>
-            View and manage the facilities you have added.
-          </Typography>
-          <Search />  
-          <FacilityCards />     
-
-        </Box>
-
+          <ResponsiveDrawer />
+          <Box sx={{ flexGrow: 1, p: 3, mt: theme.spacing(4) }}>
+            <Typography sx={{ mb: 1, fontSize: h2, color: darkBlue}}>
+              Facilities
+            </Typography>
+            <Typography sx={{ fontSize: h6bold, color: darkGray}}>
+              View and manage the facilities you have added.
+            </Typography>
+            <Search />  
+            <FacilityCards />
+          </Box>
         </Box>
     );
 };

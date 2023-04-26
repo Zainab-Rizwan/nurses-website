@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { styled, TextField, Button, Box, IconButton, useMediaQuery, Popover, Typography, Tooltip } from '@mui/material';
+import { styled, TextField, Button, Box, IconButton, useMediaQuery, Tooltip } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { SearchOutlined } from '@mui/icons-material';
 import { Add } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
-import { useState, useRef, useEffect } from 'react';
 
 const Search = () => {
     const theme = useTheme();
@@ -15,7 +14,6 @@ const Search = () => {
     const darkBlue = theme.palette.primary.dark;
     const h5bold = theme.typography.h5bolder;
     const h6bold = theme.typography.h6bold;
-    const lightGray = theme.palette.neutral.light;
 
     const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",

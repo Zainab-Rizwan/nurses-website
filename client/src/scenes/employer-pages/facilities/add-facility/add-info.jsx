@@ -1,36 +1,19 @@
 import React from "react";
-import { useState } from 'react';
-import FacilityInfoCard from "shared/FacilityInfo";
-import { Avatar, Button, CssBaseline, styled, Typography, TextField, Link, Paper, Box, Grid, useMediaQuery, Divider } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { styled, Typography, TextField, Box, Grid, useMediaQuery, Divider } from '@mui/material';
 import { useTheme } from '@emotion/react';
-import { ThemeProvider } from '@emotion/react';
-import Images from 'constants/ImgConstants';
-import { IconButton, InputAdornment } from '@mui/material';
-import { Google, Height, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
 import SharedButton from "shared/Button";
-import { TextareaAutosize } from '@mui/material';
 import ReactQuill from 'react-quill';
-import Quill from 'quill';
 import 'react-quill/dist/quill.snow.css';
 
 export default function AddFacilityInfo(props){
   const theme = useTheme();
   const navigate = useNavigate();
-  const mainBlue = theme.palette.primary.main ;
   const darkGray = theme.palette.neutral.dark;
-  const h2 = theme.typography.h2;  
-  const h4 = theme.typography.h4bold;
   const h6bold = theme.typography.h6bold;
-  const primaryMain = theme.palette.primary.main;
-  const lightGray = theme.palette.neutral.light;
   const white = theme.palette.background.default;
   const darkBlue = theme.palette.primary.dark;
-  const h3bold = theme.typography.h3bold;
-  const h5 = theme.typography.h5;
   const isFullWidth = useMediaQuery((theme) => theme.breakpoints.up('md'));
-
 
   const GuidesBox = styled(Box)(({ theme }) => ({
     justifyContent: 'center',
@@ -40,21 +23,21 @@ export default function AddFacilityInfo(props){
     borderRadius: "20px",
   }));
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-      description: data.get('description'),
-      image: data.get('image'),
-      address1: data.get('address1'),
-      address2: data.get('address2'),
-      state: data.get('state'),
-      city: data.get('city'),
-      zip: data.get('zip'),
-      beds: data.get('beds'),
-    });
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     name: data.get('name'),
+  //     description: data.get('description'),
+  //     image: data.get('image'),
+  //     address1: data.get('address1'),
+  //     address2: data.get('address2'),
+  //     state: data.get('state'),
+  //     city: data.get('city'),
+  //     zip: data.get('zip'),
+  //     beds: data.get('beds'),
+  //   });
+  // };
 
   const modules = {
     toolbar: {
@@ -103,14 +86,19 @@ export default function AddFacilityInfo(props){
               Provide a description for this facility
             </Typography>
           </Grid>
-          <Grid item xs={12} md={7} sx={{ height: '215px', mb: isFullWidth ? 0 : "2rem"}}>
+          <Grid item xs={12} md={7} sx={{ maxHeight: '265px', minHeight:'265px', height:"265px",}}>
             <ReactQuill 
               modules={modules} 
-              style={{ minHeight: '150px', height: '150px'}}
+              style={{ 
+                maxHeight: '150px', 
+                minHeight:'150px', 
+                height:'150px',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word',
+              }}
             />
           </Grid>
-
-          <Divider sx={{width: '100%', mb: 2, mt: 2.5}} />
+          <Divider sx={{width: '100%', mb: 2}} />
 
           <Grid item xs={12} md={5}>
             <Typography sx={{ fontSize: "16px", color: darkBlue, fontWeight: 700 }}>
@@ -220,7 +208,7 @@ export default function AddFacilityInfo(props){
           <Divider sx={{width: '100%', mt: 3, mb: 8}} />
 
           <Box sx={{mr: 0, mb: 2, display: 'flex', justifyContent: 'flex-end'}}>
-            <SharedButton value="Add Facility"/>
+            <SharedButton  onClick={() => navigate("/facilities")} value="Add Facility"/>
           </Box>
 
         </Grid>
