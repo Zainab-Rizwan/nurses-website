@@ -1,19 +1,12 @@
 import * as React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box, IconButton, Pagination } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box, IconButton, Pagination, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-
-function createData(
-  index: number,
-  discipline: string,
-  specialties: number,
-) {
-  return { index, discipline, specialties};
-}
+import './index.scss';
 
 const disciplines = [
     { index: 1, discipline: "Nurse Practitioner", specialties: 14 },
@@ -42,6 +35,7 @@ export default function DesciplinesTable() {
   const mainBlue = theme.palette.primary.main;
   const h5bold = theme.typography.h5bold;
   const h6bold = theme.typography.h6bold;
+  const h6 = theme.typography.h6;
 
   const [page, setPage] = useState(1);
   const entriesPerPage = 10;
@@ -53,19 +47,19 @@ export default function DesciplinesTable() {
   const startIndex = (page - 1) * entriesPerPage;
   const endIndex = startIndex + entriesPerPage;
   const displayedDisciplines = disciplines.slice(startIndex, endIndex);
-  
+  const pageCount = Math.ceil(disciplines.length / entriesPerPage);
+
 
   return (
-    <Box sx={{ marginTop: theme.spacing(4), backgroundColor: "#FFFFFF", borderRadius: "20px"}}>
-    <TableContainer>
-      <Table >
+    <Box sx={{ marginTop: theme.spacing(4), backgroundColor: "#FFFFFF", borderRadius: "20px", minHeight: "30rem", overflowX: 'auto'}}>
+    <TableContainer sx={{p:2, }}>
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell sx={{fontSize: h5bold, color: mainBlue}} align="center"> No.</TableCell>
             <TableCell sx={{fontSize: h5bold, color: mainBlue}} align="center">Disciplines</TableCell>
             <TableCell sx={{fontSize: h5bold, color: mainBlue}} align="center">Specialties</TableCell>
             <TableCell sx={{fontSize: h5bold, color: mainBlue}} align="center">Actions</TableCell>
-
           </TableRow>
         </TableHead>
         <TableBody sx={{p:2}}>
@@ -78,17 +72,17 @@ export default function DesciplinesTable() {
             <TableCell sx={{fontSize: h6bold, color: darkGray}} align="center">{row.specialties} Specialties</TableCell>
             <TableCell sx={{fontSize: h6bold, color: darkGray}} align="center">
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Box sx={{ p: 0.5 }}>
+                <Box sx={{ p: 0.25 }}>
                     <IconButton onClick={() => navigate("/expanded-facility")} size="small" sx={{ color: mainBlue, backgroundColor: lighterBlue, borderRadius: '4px', '&:hover': {backgroundColor: lighterBlue, color: "#103d49",}, display: 'flex', justifyContent: 'center' }}>
                     <OpenInFullIcon/>
                     </IconButton>
                 </Box>
-                <Box sx={{ p: 0.5 }}>
+                <Box sx={{ p: 0.25 }}>
                     <IconButton onClick={() => navigate("/edit-facility")} size="small" sx={{ color: mainBlue, backgroundColor: lighterBlue, borderRadius: '4px', '&:hover': {backgroundColor: lighterBlue, color: "#103d49",}, display: 'flex', justifyContent: 'center' }}>
                     <ModeEditIcon/>
                     </IconButton>
                 </Box>
-                <Box sx={{ p: 0.5 }}>
+                <Box sx={{ p: 0.25 }}>
                     <IconButton size="small" sx={{ color: mainBlue, backgroundColor: lighterBlue, borderRadius: '4px', '&:hover': {backgroundColor: lighterBlue, color: "#103d49",}, display: 'flex', justifyContent: 'center' }}>
                     <DeleteRoundedIcon/>
                     </IconButton>
@@ -100,8 +94,13 @@ export default function DesciplinesTable() {
         </TableBody>
       </Table>
     </TableContainer>
+    
 
-    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+    <Box sx={{display: "flex", justifyContent: "space-between",}}>
+    <Box sx={{ display: 'flex', justifyContent: 'left', p: "2rem" }}>
+        <Typography sx={{ color: "#5A6473", fontSize: h6 }}>Showing x out of 24 items</Typography>
+      </Box>
+    <Box sx={{ display: 'flex', justifyContent: 'right', p: "2rem" }}>
     <Pagination
           color="primary"
           count={pageCount}
@@ -111,6 +110,7 @@ export default function DesciplinesTable() {
           showLastButton
         />
       </Box>
+    </Box>
     </Box>
   );
 }

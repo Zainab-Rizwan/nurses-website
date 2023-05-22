@@ -19,7 +19,7 @@ interface Props {
   window?: () => Window;
 }
 
-export default function ResponsiveDrawer(props: Props) {
+export default function ResponsiveDrawer({children, ...props}) {
   const location = useLocation();
   const [activeItem, setActiveItem] = React.useState(location.pathname);
   const { window } = props;
@@ -88,6 +88,7 @@ export default function ResponsiveDrawer(props: Props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
+    <Box>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
@@ -147,6 +148,9 @@ export default function ResponsiveDrawer(props: Props) {
           {drawer}
         </Drawer>
       </Box>
+      
+    </Box>
+    {children}
     </Box>
   );
 }

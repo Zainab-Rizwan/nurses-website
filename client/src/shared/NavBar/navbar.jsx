@@ -18,7 +18,7 @@ import FlexBetween from "shared/FlexBetween/FlexBetween";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useLocation } from 'react-router-dom';
 
-const Navbar = () => {
+export default function Navbar({children, ...props}) {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -31,6 +31,7 @@ const Navbar = () => {
   const bolder= theme.typography.h6bold;
 
   return (
+    <Box>
     <FlexBetween padding="0.75rem 5%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
         <Typography
@@ -65,6 +66,7 @@ const Navbar = () => {
         >
           <Menu />
         </IconButton>
+        
       )}
 
       {/* MOBILE NAV */}
@@ -105,9 +107,10 @@ const Navbar = () => {
         </Box>
       )}
     </FlexBetween>
+    {children}
+    </Box>
   );
 };
 
-export default Navbar;
 
 

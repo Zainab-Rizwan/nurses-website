@@ -38,7 +38,7 @@ function Map() {
   ];
 
   return (
-    <CustomBox sx={{marginTop: isDesktopScreens ? "2rem": isTabletScreens ? "1.5rem" : "2rem", ml: "5%", mr: "5%" }}>
+    <CustomBox sx={{marginTop: isDesktopScreens ? "2rem": isTabletScreens ? "1.5rem" : "2rem", ml: "7%", mr: "7%" }}>
     <div className="map-container">
       <MapContainer center={[37.0902, -95.7129]} zoom={6} maxBounds={bounds} maxBoundsViscosity={1.0} keyboard={false}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
