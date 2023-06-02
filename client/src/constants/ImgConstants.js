@@ -10,6 +10,7 @@ let Images = {
     AVATAR_IMG: require("../assets/images/Avatar.jpg"),
     HOSPITAL_LOGO: require("../assets/images/hospital-logo.png"),
     HOSPITAL_IMG: require("../assets/images/hospital-image.jpg"),
+    BANNER: require("../assets/images/banner.jpg"),
 };
   
 export default Images;

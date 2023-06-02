@@ -1,4 +1,3 @@
-import React from 'react';
 import Account from 'scenes/employer-pages/account';
 import Applicants from 'scenes/employer-pages/applicants';
 import Dashboard from 'scenes/employer-pages/dashboard';
@@ -42,14 +41,14 @@ export const MyRoutes = [
     { path: "/add-facility", name: "Add Facility", component: AddFacility, layout: ResponsiveDrawer },
     { path: "/expanded-facility", name: "Expanded Facility", component: ExpandedFacility, layout: ResponsiveDrawer },
     
-    { path: "/sign-up", name: "Sign Up", component: SignUp, layout: undefined },
-    { path: "/sign-in", name: "Sign In", component: SignIn, layout: undefined },
-    { path: "/forgot-password", name: "Forgot Password", component: ForgotPassword, layout: undefined },
-    { path: "/account-setup", name: "Account Setup", component: AccoutSetUp, layout: undefined },
-    { path: "/otp", name: "OTP", component: OTP, layout: undefined },
-    { path: "/check-email", name: "Check email", component: CheckEmail, layout: undefined },
-    { path: "/password-reset", name: "Password reset", component: PasswordReset, layout: undefined },
-    { path: "/set-new-password", name: "Set new password", component: SetNewPassword, layout: undefined },
+    { path: "/sign-up", name: "Sign Up", component: SignUp, layout: Navbar },
+    { path: "/sign-in", name: "Sign In", component: SignIn, layout: Navbar },
+    { path: "/forgot-password", name: "Forgot Password", component: ForgotPassword, layout: Navbar },
+    { path: "/account-setup", name: "Account Setup", component: AccoutSetUp, layout: Navbar },
+    { path: "/otp", name: "OTP", component: OTP, layout: Navbar },
+    { path: "/check-email", name: "Check email", component: CheckEmail, layout: Navbar },
+    { path: "/password-reset", name: "Password reset", component: PasswordReset, layout: Navbar },
+    { path: "/set-new-password", name: "Set new password", component: SetNewPassword, layout: Navbar },
 ]
 
 

@@ -1,0 +1,10 @@
+
+@import "assets/scss/variables.scss";
+
+.page-banner {
+  height: 100;
+  background-color: $light-blue;
+  display: 'flex';
+  align-Items: 'center';
+  justify-content: 'center';
+}
