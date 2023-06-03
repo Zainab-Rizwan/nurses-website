@@ -83,7 +83,7 @@ export default function SignIn() {
               fullWidth
               name="password"
               label="Password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? 'password' : 'text'}
               id="password"
               autoComplete="current-password"
               InputProps={{

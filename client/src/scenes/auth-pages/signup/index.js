@@ -87,7 +87,7 @@ export default function SignUp() {
               fullWidth
               name="password"
               label="Password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? 'password' : 'text'}
               id="password"
               autoComplete="current-password"
               InputProps={{
@@ -109,7 +109,7 @@ export default function SignUp() {
               fullWidth
               name="cpassword"
               label="Confirm Password"
-              type={showConfirmPassword ? 'text' : 'password'}
+              type={showConfirmPassword ? 'password' : 'text'}
               id="cpassword"
               autoComplete="current-password"
               InputProps={{
