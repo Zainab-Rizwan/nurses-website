@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Typography, Box, Grid, Button, TextField, Divider } from '@mui/material';
 import { useTheme } from '@emotion/react';
-import { IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 export default function ChangePass() {
   const theme = useTheme();
@@ -12,10 +10,6 @@ export default function ChangePass() {
   const white = theme.palette.background.default;
   const darkBlue = theme.palette.primary.dark;
 
-  const [showCurrentPassword, setShowCurrentPassword] = React.useState(false);
-  const [showNewPassword, setShowNewPassword] = React.useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,18 +18,6 @@ export default function ChangePass() {
       npassword: data.get('npassword'),
       cnpassword: data.get('cnpassword')
     });
-  };
-
-  const toggleCurrentPasswordVisibility = () => {
-    setShowCurrentPassword((prev) => !prev);
-  };
-
-  const toggleNewPasswordVisibility = () => {
-    setShowNewPassword((prev) => !prev);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword((prev) => !prev);
   };
 
   return (
@@ -57,18 +39,8 @@ export default function ChangePass() {
             fullWidth
             name="password"
             id="password"
-            type={showCurrentPassword ? 'text' : 'password'}
-            autoComplete="password"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={toggleCurrentPasswordVisibility} edge="end">
-                    {showCurrentPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+            type="password"
+            autoComplete="password"/>
         </Grid>
       </Grid>
       <Divider sx={{ width: '100%', mt: "1rem" }} />
@@ -83,18 +55,8 @@ export default function ChangePass() {
             required
             fullWidth
             name="npassword"
-            id="npassword"
-            type={showNewPassword ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={toggleNewPasswordVisibility} edge="end">
-                    {showNewPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+            type="password"
+            id="npassword"/>
         </Grid>
       </Grid>
       <Divider sx={{ width: '100%', mt: "1rem" }} />
@@ -109,18 +71,8 @@ export default function ChangePass() {
             required
             fullWidth
             name="cnpassword"
-            id="cnpassword"
-            type={showConfirmPassword ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={toggleConfirmPasswordVisibility} edge="end">
-                    {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+            type="password"
+            id="cnpassword"/>
         </Grid>
       </Grid>
       <Grid container justifyContent="flex-end" item sx={{ mt: 2.5 }}>

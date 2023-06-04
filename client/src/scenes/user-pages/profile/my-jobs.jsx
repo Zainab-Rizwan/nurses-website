@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { Typography, Box, Grid, Button, TextField, Divider, Pagination } from '@mui/material';
+import { Typography, Box, Grid,Pagination } from '@mui/material';
 import { useTheme } from '@emotion/react';
-import { IconButton, InputAdornment } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Avatar, CssBaseline, Link, Paper, Chip, Autocomplete, FormControl } from '@mui/material';
 import Images from 'constants/ImgConstants';
 import JobCard from "shared/Job-Cards";
-
-const disciplines = ['Monitor Technician', 'Surgical First Assistant', 'Paramedic', 'Histology Technician'];
-const locations = ['Arizona', 'California', 'Indiana', 'Illinois'];
 
 const cards = [
     { image: Images.CARD_IMG, title: 'New York City, NY', text: "$3,370/Weekly", textone: "Registered Nurse / Intensive Care Unit", texttwo: "12 Hr Nights", textthree: "48 Hrs/Week", textfour: "13 Weeks", exclusive: true, travel: false},
@@ -25,10 +18,6 @@ const cards = [
 export default function MyJobs() {
   const theme = useTheme();
   const h6bold = theme.typography.h6bold;
-  const h4bold = theme.typography.h4bold;
-  const mainBlue = theme.palette.primary.main;
-  const white = theme.palette.background.default;
-  const darkBlue = theme.palette.primary.dark;
   const darkGray = theme.palette.neutral.dark;
 
   const [currentPage, setCurrentPage] = useState(0);
