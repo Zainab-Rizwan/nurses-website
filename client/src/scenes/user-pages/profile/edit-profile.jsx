@@ -30,22 +30,17 @@ export default function EditProf() {
   const lightgray = theme.palette.neutral.dark;
   const lightGray = theme.palette.background.alt;
 
-const [selectedOptions1, setSelectedOptions1] = useState(defaultValues.professions);
-const [selectedOptions2, setSelectedOptions2] = useState(defaultValues.preferredLocations);
+  const [selectedOptions1, setSelectedOptions1] = useState(defaultValues.professions);
+  const [selectedOptions2, setSelectedOptions2] = useState(defaultValues.preferredLocations);
 
-const handleOptionSelect1 = (event, values) => {
+  const handleOptionSelect1 = (event, values) => {
     setSelectedOptions1(values);
-};
-
-const handleOptionSelect2 = (event, values) => {
-    setSelectedOptions2(values);
-};
-
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split('-');
-    return `${month}/${day}/${year}`;
   };
 
+  const handleOptionSelect2 = (event, values) => {
+    setSelectedOptions2(values);
+  };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

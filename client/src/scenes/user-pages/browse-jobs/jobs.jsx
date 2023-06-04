@@ -144,7 +144,7 @@ export default function Carousel(props){
 
       
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "5%" : "20%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
@@ -184,7 +184,7 @@ export default function Carousel(props){
       </Box>
 
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "5%" : "20%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
@@ -224,7 +224,7 @@ export default function Carousel(props){
       </Box>
 
       <Box>         
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "2%" : "10%" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginLeft: "10%", marginRight:"10%", marginTop: isDesktopScreens ? "5%" : "20%" }}>
             <Typography
               sx={{ 
                 fontSize: h3bold,
